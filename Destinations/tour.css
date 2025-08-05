@@ -1,0 +1,297 @@
+.card {
+  display: block;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  padding: 10px;
+  margin: 10px 0;
+}
+/* .card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(52, 152, 219, 0.8),
+    rgba(41, 128, 185, 0.8)
+  );
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.btn-book {
+  background: rgba(129, 133, 76, 0.9);
+  color: #bcc630;
+  border: none;
+  padding: 0.8rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(10px);
+  transform: translateY(10px);
+  opacity: 0;
+}
+
+.btn-book:hover {
+  background: rgb(220, 223, 66);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(202, 201, 140, 0.493);
+} */
+body {
+  background-color: #f3f3f3;
+}
+.navbar {
+  background-color: #03264e;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+}
+.navbar-brand {
+  font-weight: bold;
+  color: #4292c6;
+}
+.nav-link {
+  color: white;
+  margin-right: 1rem;
+}
+.nav-link:hover,
+.nav-link.active {
+  color: #4292c6;
+}
+.btn-outline-light {
+  color: white;
+  border-color: white;
+}
+.btn-outline-light:hover {
+  background-color: #4292c6;
+  color: black;
+  border-color: #4292c6;
+}
+.section-title {
+  font-weight: bold;
+  font-size: 2rem;
+  text-align: center;
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+}
+.section-title::before,
+.section-title::after {
+  content: "";
+  display: inline-block;
+  width: 30vw;
+  height: 2px;
+  background-color: #4292c6;
+  margin: 0 10px;
+  vertical-align: middle;
+}
+.category-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 3rem;
+}
+.category-buttons .btn {
+  border: 1px solid #999;
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0;
+  position: relative;
+}
+.category-buttons .btn.active {
+  border: 2px solid #03264e;
+}
+.category-buttons .btn.active::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: -6px;
+  width: 2px;
+  height: 100%;
+  background-color: black;
+}
+
+.cardsDisplay {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  margin-left: 100px;
+  margin-right: 100px;
+}
+.cardsDisplayNew {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* background layer
+.header-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh; /* adjust if needed */
+/* background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  /* Add the blur effect */
+/* filter: blur(1px);
+  -webkit-filter: blur(1px);
+  z-index: -1;
+  opacity: 0.4;
+}
+.header-bg::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 30px; /* adjust fade height */
+/* background: linear-gradient(to bottom, rgba(255, 255, 255, 0), #f3f3f3); */
+/* } 
+/* Search bar styling */
+.search-bar {
+  max-width: 600px;
+  margin: 2rem auto;
+  display: flex;
+  border: 2px solid #cccccc;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.search-bar input[type="search"] {
+  border: none;
+  padding: 0.75rem 1rem;
+  flex-grow: 1;
+  font-size: 1rem;
+}
+
+.search-bar input[type="search"]:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-bar button {
+  color: #cccccc;
+  border: none;
+  padding: 0 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.search-bar button:hover {
+  color: black;
+}
+.destinations {
+  padding: 4rem 0;
+  background: #fafafa;
+}
+
+.destinations-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 3fr));
+  gap: 2rem;
+}
+
+.destination-card {
+  background: white;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.destination-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.15);
+}
+
+.card-image {
+  position: relative;
+  height: 200px;
+  overflow: hidden;
+}
+
+.card-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.destination-card:hover .card-image img {
+  transform: scale(1.05);
+}
+
+.card-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    135deg,
+    rgba(52, 152, 219, 0.8),
+    rgba(41, 128, 185, 0.8)
+  );
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+}
+
+.destination-card:hover .card-overlay {
+  opacity: 1;
+}
+
+.btn-book {
+  background: rgba(252, 27, 143, 0.9);
+  color: white;
+  padding: 0.6rem 1.5rem;
+  border: none;
+  border-radius: 30px;
+  font-weight: 600;
+  opacity: 0;
+  transform: translateY(10px);
+  transition: all 0.3s ease;
+}
+
+.destination-card:hover .btn-book {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card-content {
+  padding: 1.5rem;
+}
+
+.card-title {
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.card-description {
+  font-size: 0.95rem;
+  color: #7f8c8d;
+  margin-bottom: 1rem;
+}
+
+.card-meta {
+  display: flex;
+  gap: 1rem;
+  font-size: 0.85rem;
+  color: #95a5a6;
+}
+
+.card-meta i {
+  margin-right: 0.4rem;
+}

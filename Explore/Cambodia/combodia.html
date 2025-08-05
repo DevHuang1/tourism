@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discover Cambodia</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@500&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body, html {
+      height: 100%;
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+    }
+
+    .hero {
+      background-image: url('cambodia.jpg'); /* Replace with a Cambodia image if you want */
+      height: 100vh;
+      background-size: cover;
+      position: relative;
+    }
+
+    .overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.4);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #fff;
+    }
+
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+    }
+
+    .hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 20px auto;
+    }
+
+    .hero .btn-custom {
+      background-color: #f9e17a;
+      color: #000;
+      padding: 12px 28px;
+      font-weight: bold;
+      border: none;
+      border-radius: 30px;
+      transition: 0.3s;
+    }
+
+    .hero .btn-custom:hover {
+      background-color: #f1d95d;
+    }
+
+    .navbar {
+      background: transparent;
+    }
+    
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+      font-family: 'Poppins', sans-serif;
+      color: #03264e !important;
+    }
+
+    .info-btn {
+      font-size: 0.9rem;
+      padding: 6px 14px;
+      margin-right: 10px;
+      border-radius: 30px;
+      font-family: 'Poppins', sans-serif;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      background-color: #4292C6;
+      color: #fff;
+      border: none;
+      transition: 0.3s ease;
+    }
+
+    .info-btn:hover {
+      background-color: #337aa3;
+    }
+
+    .navbar-brand, .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      color: #03264e !important;
+    }
+    .btn-info {
+      font-size: 0.9rem;
+      padding: 5px 12px;
+      margin-right: 8px;
+    }
+    .fa-clock, .fa-cloud-sun {
+      font-size: 1rem;
+    }
+
+  
+  .book-btn {
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  padding: 10px 20px;
+  font-weight: 600;
+  border-radius: 30px;
+  background-color: #ffc107;
+  border: none;
+  pointer-events: none;
+}
+
+.image-container.active .book-btn {
+  opacity: 1;
+  pointer-events: auto;
+  z-index: 2;
+}
+
+.image-container {
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+
+        .left-col {
+            margin-left: 20px; float: left; width: 700px;
+        }
+        .right-col {
+            margin-left: 720px; 
+        }
+        .col-1 {
+            float: left; margin-left: 80px;
+        }
+        .col-2 {
+            float: left; margin-left: 80px;
+        }
+        .col-3 {
+            float: left; margin-left: 80px;
+        }
+        .footer {
+            clear: both;
+        }
+         footer { 
+            font-size:70%; text-align: right; clear: right; padding-bottom:20px; 
+        }
+        .click:hover {
+            cursor: pointer;
+        }
+        .click a {
+            text-decoration: none; color: black;
+        } 
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- Navbar -->
+<nav class="navbar navbar-expand-lg ticky-top bg-white shadow-sm px-4 py-2">
+<div class="d-flex align-items-center">
+  <a class="navbar-brand  me-3"" href="#">Discover Cambodia</a>
+   <button id="timeBtn" class="info-btn">
+      <i class="fa-regular fa-clock"></i>
+      <span>Loading...</span>
+    </button>
+
+    <button id="weatherBtn" class="info-btn">
+      <i class="fa-solid fa-cloud-sun"></i>
+      <span>Loading...</span>
+    </button>
+</div>
+  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+    <ul class="navbar-nav">
+      <li class="nav-item"><a class="nav-link" href="#">Tour</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Destinations</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Book</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<script>
+  // Live Cambodia time (UTC+7)
+  function updateTime() {
+    const now = new Date();
+    const cambodiaOffset = 7 * 60; // UTC+7 in minutes
+    const localOffset = now.getTimezoneOffset();
+    const cambodiaTime = new Date(now.getTime() + (cambodiaOffset + localOffset) * 60000);
+    const timeStr = cambodiaTime.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    document.getElementById('timeBtn').innerText = `Time: ${timeStr}`;
+  }
+  setInterval(updateTime, 1000);
+  updateTime();
+
+  // Weather for Phnom Penh from OpenWeatherMap
+  const apiKey = 'YOUR_API_KEY_HERE'; // Get from https://openweathermap.org/api
+  const weatherBtn = document.getElementById('weatherBtn');
+  fetch(`https://api.openweathermap.org/data/2.5/weather?q=Phnom%20Penh,KH&units=metric&appid=${apiKey}`)
+    .then(res => res.json())
+    .then(data => {
+      const temp = Math.round(data.main.temp);
+      const condition = data.weather[0].main;
+      weatherBtn.innerText = `Weather: ${temp}°C, ${condition}`;
+    })
+    .catch(() => {
+      weatherBtn.innerText = 'Weather: Unavailable';
+    });
+</script>
+
+<div class="hero">
+  <div class="overlay"></div>
+  <div class="hero-content text-white container">
+    <h1>Step into the Heart of <br> Ancient Cambodia</h1>
+    <p>Uncover the mysteries of Angkor, centuries-old traditions, and the timeless spirit of Khmer culture.</p>
+    <a href="#" class="btn btn-custom">Start Your Journey</a>
+  </div>
+</div>
+
+
+<!-- Cambodian Culture Section -->
+<section class="container my-5">
+  <h2 class="text-center mb-5" style="font-family: 'Orbitron', sans-serif; color: #03264e;">Explore Cambodian Culture</h2>
+
+  <!-- Card 1: Tradition -->
+  <div class="card mb-5 p-3 border-0 shadow-lg rounded-4" style="background-color: #f9f5e9;">
+    <div class="row g-0 align-items-center" style="min-height: 350px;" >
+      <div class="col-md-6">
+        <img src="cambodiatradition.avif" class="img-fluid h-100 rounded-end object-fit-cover" style="object-fit: cover;" alt="Cambodian tradition">
+      </div>
+      <div class="col-md-6 p-4">
+        <h2 class="card-title text-primary mb-3">Rich Traditions</h2>
+        <p class="card-text text-muted">Cambodia’s traditions are deeply rooted in Buddhism and the Khmer Empire. Classical Apsara dance, colorful festivals like Pchum Ben, and spiritual practices reflect the people's respect for ancestors and community.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 2: People -->
+  <div class="card mb-5 p-3 border-0 shadow-lg rounded-4" style="background-color: #f9f5e9;">
+    <div class="row g-0 align-items-center  flex-md-row-reverse" style="min-height: 350px;">
+      <div class="col-md-6">
+        <img src="people..jpg" class="img-fluid h-100 rounded-end object-fit-cover" style="object-fit: cover;" alt="Cambodian people">
+      </div>
+      <div class="col-md-6 p-4">
+        <h2 class="card-title text-primary mb-3">Warm & Resilient People</h2>
+        <p class="card-text text-muted">Known for their kindness and hospitality, Cambodian people embody resilience shaped by a complex history. Villages are close-knit, and daily life often revolves around family, community, and tradition.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Card 3: Food -->
+  <div class="card mb-5 p-3 border-0 shadow-lg rounded-4" style="background-color: #f9f5e9;" >
+    <div class="row g-0 align-items-center" style="min-height: 350px;">
+      <div class="col-md-6">
+        <img src="food.avif" class="img-fluid h-100 rounded-end object-fit-cover" style="object-fit: cover;" alt="Cambodian food">
+      </div>
+      <div class="col-md-6 p-4">
+        <h2 class="card-title text-primary mb-3">Authentic Khmer Cuisine</h2>
+        <p class="card-text text-muted">Cambodian food is a flavorful blend of sweet, sour, and savory. Popular dishes like Amok (steamed fish curry), Bai Sach Chrouk (pork and rice), and Nom Banh Chok (noodle soup) offer a unique taste of Khmer heritage.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<section class="container my-5">
+  <h2 class="text-center mb-5" style="font-family: 'Orbitron', sans-serif; color: #03264e;">Top Destinations in Cambodia</h2>
+  <div class="row g-4">
+
+    <!-- Angkor Wat -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 rounded-4 h-100 position-relative overflow-hidden">
+        <div class="position-relative image-container" onclick="toggleButton(this)">
+        <img src="cambodia2.jpg" class="card-img-top rounded-top-4" alt="Angkor Wat">
+         <button class="btn btn-warning book-btn position-absolute top-50 start-50 translate-middle" >
+        <i class="fa-solid fa-ticket me-1"></i> Book Now
+      </button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-dark">Angkor Wat</h5>
+          <p class="card-text text-muted">A UNESCO World Heritage site and the largest religious monument in the world. Ideal for sunrise tours and historical exploration.</p>
+          <div class="d-flex justify-content-between text-muted small">
+            <span><i class="fas fa-map-marker-alt me-1 text-primary"></i> Siem Reap</span>
+            <span><i class="far fa-clock me-1 text-primary"></i> 1 Day</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Bayon Temple -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 rounded-4 h-100 position-relative overflow-hidden">
+        <div class="position-relative image-container" onclick="toggleButton(this)">
+        <img src="bayontemple.avif" class="card-img-top rounded-top-4" alt="Bayon Temple">
+         <button class="btn btn-warning book-btn position-absolute top-50 start-50 translate-middle" >
+        <i class="fa-solid fa-ticket me-1"></i> Book Now
+      </button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-dark">Bayon Temple</h5>
+          <p class="card-text text-muted">Famous for its serene stone faces, Bayon is a captivating part of Angkor Thom. Great for cultural immersion and photo lovers.</p>
+          <div class="d-flex justify-content-between text-muted small">
+            <span><i class="fas fa-map-marker-alt me-1 text-primary"></i> Angkor Thom</span>
+            <span><i class="far fa-clock me-1 text-primary"></i> Half Day</span>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+    <!-- Phnom Penh -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 rounded-4 h-100 position-relative overflow-hidden">
+        <div class="position-relative image-container" onclick="toggleButton(this)">
+        <img src="phnom penh.avif" class="card-img-top rounded-top-4" alt="Phnom Penh">
+         <button class="btn btn-warning book-btn position-absolute top-50 start-50 translate-middle">
+        <i class="fa-solid fa-ticket me-1"></i> Book Now
+      </button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-dark">Phnom Penh</h5>
+          <p class="card-text text-muted">Cambodia’s capital, offering a mix of royal history and modern charm. Visit the Royal Palace, markets, and riverside dining.</p>
+          <div class="d-flex justify-content-between text-muted small">
+            <span><i class="fas fa-map-marker-alt me-1 text-primary"></i> Phnom Penh</span>
+            <span><i class="far fa-clock me-1 text-primary"></i> 1–2 Days</span>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+    <!-- Koh Rong Island -->
+    <div class="col-md-6 col-lg-3">
+      <div class="card shadow-sm border-0 rounded-4 h-100  position-relative overflow-hidden">
+        <div class="position-relative image-container" onclick="toggleButton(this)">
+        <img src="beach.avif" class="card-img-top rounded-top-4" alt="Koh Rong Island">
+         <button class="btn btn-warning book-btn position-absolute top-50 start-50 translate-middle" >
+        <i class="fa-solid fa-ticket me-1"></i> Book Now
+      </button>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title fw-bold text-dark">Koh Rong Island</h5>
+          <p class="card-text text-muted">A tropical paradise known for crystal-clear waters, white sand beaches, and vibrant nightlife. Perfect for relaxation and snorkeling.</p>
+          <div class="d-flex justify-content-between text-muted small">
+            <span><i class="fas fa-map-marker-alt me-1 text-primary"></i> Sihanoukville</span>
+            <span><i class="far fa-clock me-1 text-primary"></i> 2–3 Days</span>
+          </div>
+        </div>
+      
+      </div>
+    </div>
+
+  </div>
+</section>
+<script>
+  function toggleButton(container) {
+    
+    container.classList.toggle("active");
+
+  }
+</script>
+  <div class="container">
+ <div class="left-col">
+        <h2 class="logo">Travel</h2>
+        <label for="email">Email : </label><br>
+        <p>tourism@gmail.com</p><hr>
+        <label for="phone">Phone : </label><br>
+        <p>(+95)9761185623</p><hr>
+        <label for="follow">Follow us : </label><br><br>
+        <button><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"viewBox="0 0 24 24"><path fill="currentColor" fill-rule="evenodd"d="M17.312 6.673a2.933 2.933 0 0 0-4.993 2.673a.5.5 0 0 1-.512.612a10.23 10.23 0 0 1-6.896-3.16a2.935 2.935 0 0 0 1.192 3.241c.408.273.197.93-.293.916a4 4 0 0 1-.947-.146A2.93 2.93 0 0 0 7.12 12.94c.504.101.528.837.033.972a4 4 0 0 1-.865.135a2.93 2.93 0 0 0 2.398 1.324c.46.008.661.609.3.893a7.4 7.4 0 0 1-3.371 1.48a9.2 9.2 0 0 0 3.242.585q.027 0 .052.003c5.942-.028 9.207-4.953 9.207-9.258c0-.152 0-.282-.009-.409a.5.5 0 0 1 .206-.44q.255-.184.491-.393a7 7 0 0 1-.398.058a.5.5 0 0 1-.315-.925q.25-.15.463-.343q-.383.12-.78.198a.5.5 0 0 1-.46-.148M8.804 19.33a10.2 10.2 0 0 1-5.474-1.616a.5.5 0 0 1 .33-.917q.376.045.757.046v.354m0 0v-.354a6.4 6.4 0 0 0 2.948-.719a3.93 3.93 0 0 1-2.37-2.48a.51.51 0 0 1 .184-.56a3.93 3.93 0 0 1-1.41-3.015c0-.3.222-.564.534-.542a3.93 3.93 0 0 1 .029-3.902a.5.5 0 0 1 .82-.065a9.23 9.23 0 0 0 6.098 3.35a3.931 3.931 0 0 1 6.585-3.125a6.4 6.4 0 0 0 1.765-.716a.5.5 0 0 1 .73.584a4 4 0 0 1-.367.81q.075-.03.15-.064a.5.5 0 0 1 .62.734a7.5 7.5 0 0 1-1.619 1.742l.001.201c0 4.747-3.616 10.258-10.258 10.258l-.053-.003"clip-rule="evenodd" /></svg> Twitter/X</button>
+        <button><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"viewBox="0 0 20 20"><path fill="currentColor"d="M17 1H3c-1.1 0-2 .9-2 2v14c0 1.101.9 2 2 2h14c1.1 0 2-.899 2-2V3c0-1.1-.9-2-2-2M9.984 15.523a5.54 5.54 0 0 0 5.538-5.539c0-.338-.043-.664-.103-.984H17v7.216a.69.69 0 0 1-.693.69H3.693a.69.69 0 0 1-.693-.69V9h1.549c-.061.32-.104.646-.104.984a5.54 5.54 0 0 0 5.539 5.539M6.523 9.984a3.461 3.461 0 1 1 6.922 0a3.461 3.461 0 0 1-6.922 0M16.307 6h-1.615A.694.694 0 0 1 14 5.308V3.691c0-.382.31-.691.691-.691h1.615c.384 0 .694.309.694.691v1.616c0 .381-.31.693-.693.693" /></svg> Instagram</button>
+        <button><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17"viewBox="0 0 14 14"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"d="M.5 12.5v-11a1 1 0 0 1 1-1h11a1 1 0 0 1 1 1v11a1 1 0 0 1-1 1h-3V8.76h.71a.61.61 0 0 0 .61-.61v-.77a.61.61 0 0 0-.61-.61h-.67v-.94c0-.84.38-.84.76-.84h.49a.55.55 0 0 0 .43-.18a.58.58 0 0 0 .18-.43v-.74a.62.62 0 0 0-.6-.64H9.65a2.32 2.32 0 0 0-2.39 2.6v1.17h-.64a.61.61 0 0 0-.62.61v.77a.61.61 0 0 0 .62.61h.64v4.74H1.5a1 1 0 0 1-1-1Z" /></svg> Facebook</button>
+    </div>
+    <div class="right-col">
+        <div class="col-1">
+            <h4>Destination</h4>
+            <p id="my" class="click"><a href="#">Myanmar</a></p>
+            <p id="th" class="click"><a href="#">Thailand</a></p>
+            <p id="vi" class="click"><a href="#">Vietnam</a></p>
+            <p id="ca" class="click"><a href="#">Cambodia</a></p>
+            <p id="j" class="click"><a href="#">Japan</a></p>
+            <p id="sw" class="click"><a href="#">Swizerland</a></p>
+            <p id="ch" class="click"><a href="#">China</a></p>
+            <p id="nor" class="click"><a href="#">Norway</a></p>
+            <p id="si" class="click"><a href="#">Singapore</a></p>
+        </div>
+        <div class="col-2">
+            <h4>Pages</h4>
+            <p id="tour" class="click"><a href="#">Tours</a></p>
+            <p id="destination" class="click"><a href="#">Destination</a></p>
+            <p id="about" class="click"><a href="#">About</a></p>
+            <p id="blog" class="click"><a href="#">Blog</a></p>
+            <p id="contact" class="click"><a href="#">Contact</a></p>
+        </div>
+        <div class="col-3">
+            <h4>Utility</h4>
+            <p class="click">FAQs</p>
+            <p class="click">Privacy</p>
+            <p class="click">Terms</p>
+            <p class="click">404</p>
+        </div>
+    </div>
+    <div class="footer">
+        <br><br><hr>
+        <footer>Copyright &copy; 2025</footer>
+    </div>
+    </div>
+
+
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
