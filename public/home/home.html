@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <!-- <link href="home.css" rel="stylesheet" /> -->
     <style>
       @import url("https://fonts.googleapis.com/css?family=Poppins:200,300,400,500,600,700,800,900&display=swap");
       * {
@@ -12,200 +11,213 @@
         padding: 0;
         box-sizing: border-box;
         font-family: "Poppins", sans-serif;
-      }
-      header {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        padding: 40px 100px;
-        z-index: 1000;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      header .logo {
-        color: #fff;
-        text-transform: uppercase;
-        cursor: pointer;
-      }
-      .toggle {
-        position: relative;
-        width: 60px;
-        height: 60px;
-        background: url();
-        background-repeat: no-repeat;
-        background-size: 30px;
-        background-position: center;
+}
+header {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  padding: 40px 100px;
+  z-index: 1000;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+header .logo {
+  color: #fff;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.toggle {
+  position: relative;
+  width: 60px;
+  height: 60px;
+  background: url();
+  background-repeat: no-repeat;
+  background-size: 30px;
+  background-position: center;
 
-        cursor: pointer;
-      }
-      .toggle.active {
-        background: url();
-        background-repeat: no-repeat;
-        background-size: 25px;
-        background-position: center;
-        cursor: pointer;
-      }
-      .showcase {
-        position: absolute;
-        right: 0;
-        width: 100%;
-        min-height: 100vh;
-        padding: 100px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        background: #3f3f3f;
-        transition: 0.5s;
-        z-index: 2;
-      }
-      .showcase.active {
-        right: 300px;
-      }
+  cursor: pointer;
+}
+.toggle.active {
+  background: url();
+  background-repeat: no-repeat;
+  background-size: 25px;
+  background-position: center;
+  cursor: pointer;
+}
+.showcase {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  min-height: 100vh;
+  padding: 100px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #111;
+  transition: 0.5s;
+  z-index: 2;
+}
+.showcase.active {
+  right: 300px;
+}
 
-      .showcase video {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        opacity: 0.6;
-      }
-      .overlay {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+.showcase video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.8;
+}
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
 
-        mix-blend-mode: overlay;
-      }
-      .text {
-        position: relative;
-        z-index: 10;
-      }
+  mix-blend-mode: overlay;
+}
+.text {
+  position: relative;
+  z-index: 10;
+}
 
-      .text h2 {
-        font-size: 5em;
-        font-weight: 800;
-        color: #fff;
-        line-height: 1em;
-        text-transform: uppercase;
-      }
-      .text h3 {
-        font-size: 4em;
-        font-weight: 700;
-        color: #fff;
-        line-height: 1em;
-        text-transform: uppercase;
-      }
-      .text p {
-        font-size: 1.1em;
-        color: #fff;
-        margin: 20px 0;
-        font-weight: 400;
-        max-width: 700px;
-      }
-      .text a {
-        display: inline-block;
-        font-size: 1em;
-        background: #fff;
-        padding: 10px 30px;
-        text-transform: uppercase;
-        text-decoration: none;
-        font-weight: 500;
-        margin-top: 10px;
-        color: #111;
-        letter-spacing: 2px;
-        transition: 0.2s;
-      }
-      .text a:hover {
-        letter-spacing: 6px;
-      }
-      .social {
-        position: absolute;
-        z-index: 10;
-        bottom: 20px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .social li {
-        list-style: none;
-      }
-      .social li a {
-        display: inline-block;
-        margin-right: 20px;
-        filter: invert(1);
-        transform: scale(0.5);
-        transition: 0.5s;
-      }
-      .social li a:hover {
-        transform: scale(0.5) translateY(-15px);
-      }
-      .menu {
-        position: absolute;
-        top: 0;
-        right: 0;
-        width: 300px;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .menu ul {
-        position: relative;
-      }
-      .menu ul li {
-        list-style: none;
-      }
-      .menu ul li a {
-        text-decoration: none;
-        font-size: 24px;
-        color: #111;
-      }
-      .menu ul li a:hover {
-        color: #03a9f4;
-      }
+.text h2 {
+  font-size: 5em;
+  font-weight: 800;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+.text h3 {
+  font-size: 4em;
+  font-weight: 700;
+  color: #fff;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+.text p {
+  font-size: 1.1em;
+  color: #fff;
+  margin: 20px 0;
+  font-weight: 400;
+  max-width: 700px;
+}
+.text a {
+  display: inline-block;
+  font-size: 1em;
+  background: #fff;
+  padding: 10px 30px;
+  text-transform: uppercase;
+  text-decoration: none;
+  font-weight: 500;
+  margin-top: 10px;
+  color: #111;
+  letter-spacing: 2px;
+  transition: 0.2s;
+}
+.text a:hover {
+  letter-spacing: 6px;
+}
+.social {
+  position: absolute;
+  z-index: 10;
+  bottom: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.social li {
+  list-style: none;
+}
+.social li a {
+  display: inline-block;
+  margin-right: 20px;
+  filter: invert(1);
+  transform: scale(0.5);
+  transition: 0.5s;
+}
+.social li a:hover {
+  transform: scale(0.5) translateY(-15px);
+}
+.menu {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 300px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.menu ul {
+  position: relative;
+}
+.menu ul li {
+  list-style: none;
+}
+.menu ul li a {
+  text-decoration: none;
+  font-size: 24px;
+  color: #111;
+}
+.menu ul li a:hover {
+  color: #03a9f4;
+}
 
-      @media (max-width: 991px) {
-        .showcase,
-        .showcase header {
-          padding: 40px;
-        }
-        .text h2 {
-          font-size: 3em;
-        }
-        .text h3 {
-          font-size: 2em;
-        }
-      }
+@media (max-width: 991px) {
+  .showcase,
+  .showcase header {
+    padding: 40px;
+  }
+  .text h2 {
+    font-size: 3em;
+  }
+  .text h3 {
+    font-size: 2em;
+  }
+}
     </style>
   </head>
   <body>
     <section class="showcase">
       <header>
         <h2 class="logo">Travel</h2>
-        <div class="toggle"></div>
+        <div class="toggle"><img src="78-781991_airplane-circle-icon-png-transparent-png-removebg-preview.png" height="35" width="35"></div>
       </header>
-      <video muted loop autoplay>
-        <source src="2252797-uhd_3840_2160_30fps.mp4" type="video/mp4" />
-      </video>
+      <video src="2252797-uhd_3840_2160_30fps.mp4" muted loop autoplay></video>
       <div class="overlay"></div>
       <div class="text">
-        <h2>Never Stop To</h2>
+        <h2>Never Stop</h2>
         <h3>Exploring The World</h3>
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          Explore breathtaking landscapes, rich cultural heritage, and unforgettable experiences with us. Whether you're seeking
+          serene nature escapes, vibrant city life, or hidden gems off the beaten path, our tourism website is your trusted guide.
+          Discover top attractions, plan your dream itinerary, and uncover the stories that make every destination unique. Let
+          your journey begin here—where travel dreams come to life.
         </p>
-        <a href="/destinations/tour.html">Explore</a>
+        <a href="/Destinations/tour.html">Explore</a>
       </div>
-      <ul class="social"></ul>
+      <ul class="social">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="32"
+          height="32"
+          viewBox="0 0 24 24"
+        >
+          <!-- Icon from Majesticons by Gerrit Halfmann - https://github.com/halfmage/majesticons/blob/main/LICENSE -->
+          <path
+            fill="currentColor"
+            fill-rule="evenodd"
+            d="M16.48 14h4.02a2.5 2.5 0 1 0 0-5H6.618a1 1 0 0 1-.894-.553l-.448-.894A1 1 0 0 0 4.382 7H2.517a1 1 0 0 0-.92 1.394l2.143 5a1 1 0 0 0 .92.606h3.863a1 1 0 0 1 .928 1.371L8.55 17.63A1 1 0 0 0 9.477 19h2.042a1 1 0 0 0 .781-.375l3.4-4.25a1 1 0 0 1 .78-.375M9.5 8h4.75L12.3 5.4a1 1 0 0 0-.8-.4H9.618a1 1 0 0 0-.894 1.447z"
+            clip-rule="evenodd"
+          />
+        </svg>
+      </ul>
     </section>
     <div class="menu">
       <ul>
@@ -218,12 +230,12 @@
     </div>
     <script>
       const menuToggle = document.querySelector(".toggle");
-      const showcase = document.querySelector(".showcase");
+        const showcase = document.querySelector(".showcase");
 
-      menuToggle.addEventListener("click", () => {
-        menuToggle.classList.toggle("active");
-        showcase.classList.toggle("active");
-      });
+        menuToggle.addEventListener("click", () => {
+          menuToggle.classList.toggle("active");
+          showcase.classList.toggle("active");
+        });
     </script>
   </body>
 </html>
