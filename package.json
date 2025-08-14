@@ -1,0 +1,20 @@
+{
+  "name": "my-project",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "nodemon api/dev-server.js",
+    "start": "node api/dev-server.js",
+    "deploy": "vercel --prod"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.10"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
