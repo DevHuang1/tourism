@@ -93,7 +93,6 @@ body {
   color: white;
   position: relative;
   overflow: hidden;
-  backface-visibility: initial;
 }
 
 .hero::before {

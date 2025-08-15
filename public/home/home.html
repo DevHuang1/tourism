@@ -30,21 +30,28 @@
       }
       .toggle {
         position: relative;
-        width: 60px;
-        height: 60px;
-        background: url();
+        width: 38px;
+        height: 38px;
+        background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png);
         background-repeat: no-repeat;
-        background-size: 30px;
+        background-size: 35px;
         background-position: center;
-
+        border-radius: 50%;
+        overflow: hidden;
+        background-blend-mode: multiply;
         cursor: pointer;
       }
       .toggle.active {
-        background: url();
+        background: url(https://upload.wikimedia.org/wikipedia/commons/thumb/b/b2/Hamburger_icon.svg/1200px-Hamburger_icon.svg.png);
         background-repeat: no-repeat;
-        background-size: 25px;
+        background-size: 35px;
         background-position: center;
         cursor: pointer;
+        transform: scale(1.05);
+      }
+      .toggle:hover {
+        background-color: #fff;
+        animation: 0.7s ease-in-out;
       }
       .showcase {
         position: absolute;
@@ -55,9 +62,12 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
-        background: #111;
+
         transition: 0.5s;
         z-index: 2;
+        background: url();
+        background-repeat: no-repeat;
+        background-size: cover;
       }
       .showcase.active {
         right: 300px;
@@ -70,7 +80,7 @@
         width: 100%;
         height: 100%;
         object-fit: cover;
-        opacity: 0.8;
+        opacity: 1;
       }
       .overlay {
         position: absolute;
@@ -187,15 +197,14 @@
     <section class="showcase">
       <header>
         <h2 class="logo">Travel</h2>
-        <div class="toggle">
-          <img
-            src="78-781991_airplane-circle-icon-png-transparent-png-removebg-preview.png"
-            height="35"
-            width="35"
-          />
-        </div>
+        <div class="toggle"></div>
       </header>
-      <video src="2252797-uhd_3840_2160_30fps.mp4" muted loop autoplay></video>
+      <video
+        src="/Explore/2252797-uhd_3840_2160_30fps.mp4"
+        muted
+        loop
+        autoplay
+      ></video>
       <div class="overlay"></div>
       <div class="text">
         <h2>Never Stop</h2>
@@ -211,22 +220,7 @@
         </p>
         <a href="/destinations/tour.html">Explore</a>
       </div>
-      <ul class="social">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          width="32"
-          height="32"
-          viewBox="0 0 24 24"
-        >
-          <!-- Icon from Majesticons by Gerrit Halfmann - https://github.com/halfmage/majesticons/blob/main/LICENSE -->
-          <path
-            fill="currentColor"
-            fill-rule="evenodd"
-            d="M16.48 14h4.02a2.5 2.5 0 1 0 0-5H6.618a1 1 0 0 1-.894-.553l-.448-.894A1 1 0 0 0 4.382 7H2.517a1 1 0 0 0-.92 1.394l2.143 5a1 1 0 0 0 .92.606h3.863a1 1 0 0 1 .928 1.371L8.55 17.63A1 1 0 0 0 9.477 19h2.042a1 1 0 0 0 .781-.375l3.4-4.25a1 1 0 0 1 .78-.375M9.5 8h4.75L12.3 5.4a1 1 0 0 0-.8-.4H9.618a1 1 0 0 0-.894 1.447z"
-            clip-rule="evenodd"
-          />
-        </svg>
-      </ul>
+      <ul class="social"></ul>
     </section>
     <div class="menu">
       <ul>
