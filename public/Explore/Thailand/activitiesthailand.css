@@ -400,9 +400,12 @@ body {
   }
 
   .nav-menu {
-    gap: 1rem;
+    gap: 0.4rem;
   }
-
+  ol,
+  ul {
+    padding-left: 0;
+  }
   .hero-title {
     font-size: 2.5rem;
   }
@@ -451,14 +454,5 @@ body {
 
   .card-content {
     padding: 1.5rem;
-  }
-  .nav {
-    flex-direction: column;
-    gap: 0.7rem;
-    padding: 1rem;
-  }
-
-  .nav-menu {
-    gap: 0.8rem;
   }
 }
