@@ -83,7 +83,7 @@ body {
 .hero {
   height: 100vh;
   /* background: linear-gradient(135deg, #f2e0df, #e2be74, #ff8128, #ff5a57 100%); */
-  background: url(https://blog.bangkokair.com/wp-content/uploads/2024/10/Cover_bangkok-travel-guide-thailand-capital.jpg);
+  background: url(https://encrypted-tbn3.gstatic.com/licensed-image?q=tbn:ANd9GcQamo1CHQHQAopP_JBLuvUyt3sxhfMHBlwgvSS9f1fOu0AYkDyk-lOCB_1sZsoeXFwG36tYlSZ6Z7Wo5K5sPAZztGkvlNz8GvC8e68hKxM);
   background-repeat: no-repeat;
   background-size: cover;
   display: flex;
@@ -436,7 +436,7 @@ body {
   }
 }
 
-@media (max-width: 480px) {
+@media (max-width: 450px) {
   .hero {
     padding: 0 1rem;
   }
@@ -451,5 +451,14 @@ body {
 
   .card-content {
     padding: 1.5rem;
+  }
+  .nav {
+    flex-direction: column;
+    gap: 0.7rem;
+    padding: 1rem;
+  }
+
+  .nav-menu {
+    gap: 0.8rem;
   }
 }
