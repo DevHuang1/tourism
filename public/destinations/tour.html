@@ -88,16 +88,30 @@
 
       <!-- Category buttons -->
       <div class="category-buttons">
-        <button id="All" class="btn active">All tours</button>
-        <button id="Singapore" class="btn">Singapore</button>
-        <button id="Thailand" class="btn">Thailand</button>
-        <button id="China" class="btn">China</button>
-        <button id="Vietnam" class="btn">Vietnam</button>
-        <button id="Cambodia" class="btn">Cambodia</button>
-        <button id="Myanmar" class="btn">Myanmar</button>
-        <button id="Japan" class="btn">Japan</button>
-        <button id="Switzerland" class="btn">Switzerland</button>
-        <button id="Norway" class="btn">Norway</button>
+        <a href="#allTours"
+          ><button id="All" class="btn active">All tours</button></a
+        >
+        <a href="#sgArea"
+          ><button id="Singapore" class="btn">Singapore</button></a
+        >
+        <a href="#thaiArea"
+          ><button id="Thailand" class="btn">Thailand</button></a
+        >
+        <a href="#chinaArea"><button id="China" class="btn">China</button></a>
+        <a href="#vietArea"
+          ><button id="Vietnam" class="btn">Vietnam</button></a
+        >
+        <a href="#camArea"
+          ><button id="Cambodia" class="btn">Cambodia</button></a
+        >
+        <a href="#myanArea"
+          ><button id="Myanmar" class="btn">Myanmar</button></a
+        >
+        <a href="#japArea"><button id="Japan" class="btn">Japan</button></a>
+        <a href="#switArea"
+          ><button id="Switzerland" class="btn">Switzerland</button></a
+        >
+        <a href="#norArea"><button id="Norway" class="btn">Norway</button></a>
       </div>
     </div>
 
@@ -105,11 +119,11 @@
 
     <section id="cardsDisplay" class="destinations">
       <div class="container">
-        <div class="destinations-grid">
+        <div id="allTours" class="destinations-grid">
           <div class="destination-card Singapore" data-country="singapore">
             <div class="card-image">
               <img class="sgImg" src="countries/changi.jpg" alt="Singapore" />
-              <div class="card-overlay">
+              <div id="sgArea" class="card-overlay">
                 <a href="/Explore/"
                   ><button class="btn-book">Book Now</button></a
                 >
@@ -133,7 +147,7 @@
           <div class="destination-card China" data-country="china">
             <div class="card-image china-card">
               <img src="countries/chongqing.jpg" alt="China" />
-              <div class="card-overlay">
+              <div id="chinaArea" class="card-overlay">
                 <button class="btn-book">Book Now</button>
               </div>
             </div>
@@ -153,7 +167,7 @@
           <div class="destination-card Vietnam" data-country="vietnam">
             <div class="card-image viet-card">
               <img src="countries/goldenbridge.jpg" alt="Vietnam" />
-              <div class="card-overlay">
+              <div id="vietArea" class="card-overlay">
                 <button class="btn-book">Book Now</button>
               </div>
             </div>
@@ -176,7 +190,7 @@
                 src="countries/bagan-temple-ruins-2-scaled-e1695194863161.jpg"
                 alt="Myanmar"
               />
-              <div class="card-overlay">
+              <div id="myanArea" class="card-overlay">
                 <button class="btn-book">Book Now</button>
               </div>
             </div>
@@ -200,7 +214,7 @@
                 src="countries/ayutthaya.jpg"
                 alt="Thailand"
               />
-              <div class="card-overlay">
+              <div id="thaiArea" class="card-overlay">
                 <a href="/Explore/Thailand/activitiesthailand.html">
                   <button class="btn-book">Book Now</button></a
                 >
@@ -224,7 +238,7 @@
           <div class="destination-card Cambodia" data-country="cambodia">
             <div class="card-image cam-card">
               <img src="countries/cambodia.jpg" alt="Cambodia" />
-              <div class="card-overlay">
+              <div id="camArea" class="card-overlay">
                 <button class="btn-book">Book Now</button>
               </div>
             </div>
@@ -249,7 +263,7 @@
                 src="countries/Japan-e1634207070862-1170x630.jpg.optimal.jpg"
                 alt="Japan"
               />
-              <div class="card-overlay">
+              <div id="japArea" class="card-overlay">
                 <a href="/Explore/Japan/activitiesjapan.html"
                   ><button class="btn-book">Book Now</button></a
                 >
@@ -271,7 +285,7 @@
           <div class="destination-card Switzerland" data-country="switzerland">
             <div class="card-image swiz-card">
               <img src="countries/switz.webp" alt="Switzerland" />
-              <div class="card-overlay">
+              <div id="switArea" class="card-overlay">
                 <button class="btn-book">Book Now</button>
               </div>
             </div>
@@ -293,7 +307,7 @@
           <div class="destination-card Norway" data-country="norway">
             <div class="card-image nor-card">
               <img src="countries/Norway.jpg" alt="Norway" />
-              <div class="card-overlay">
+              <div id="norArea" class="card-overlay">
                 <button class="btn-book">Book Now</button>
               </div>
             </div>

@@ -5,6 +5,7 @@
   padding: 10px;
   margin: 10px 0;
 }
+
 /* .card-overlay {
   position: absolute;
   top: 0;
@@ -96,6 +97,7 @@ body {
   gap: 0.5rem;
   margin-bottom: 3rem;
 }
+
 .category-buttons .btn {
   border: 1px solid #999;
   background: white;
@@ -395,6 +397,13 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 989px) {
+  .section-title::before,
+  .section-title::after {
+    content: "";
+    display: none;
+  }
+}
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
@@ -417,7 +426,11 @@ body {
   .section-title {
     font-size: 2.2rem;
   }
-
+  .section-title::before,
+  .section-title::after {
+    content: "";
+    display: none;
+  }
   .destinations-grid {
     grid-template-columns: 1fr;
     gap: 2rem;
