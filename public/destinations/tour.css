@@ -397,7 +397,7 @@ body {
 }
 
 /* Responsive Design */
-@media (max-width: 991px) {
+@media (max-width: 999px) {
   .section-title::before,
   .section-title::after {
     content: "";
