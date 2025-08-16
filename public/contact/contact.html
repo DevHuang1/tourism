@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Contact Us — Responsive Form</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      :root {
+        --bg: #ffffff;
+        --card: #f9fafb;
+        --muted: #6b7280;
+        --text: #111827;
+        --ring: #3b82f6;
+        --accent: #2563eb;
+        --accent-600: #1d4ed8;
+        --danger: #dc2626;
+        --ok: #16a34a;
+        --radius: 12px;
+        --shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        height: 100%;
+      }
+      body {
+        margin: 0;
+        font: 16px/1.5 system-ui, -apple-system, Segoe UI, Roboto, Inter, Arial,
+          sans-serif;
+        color: var(--text);
+        background: var(--bg);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 24px;
+      }
+
+      .wrap {
+        width: 100%;
+        max-width: 900px;
+        background: var(--card);
+        border: 1px solid #e5e7eb;
+        border-radius: var(--radius);
+        box-shadow: var(--shadow);
+        overflow: hidden;
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      @media (min-width: 920px) {
+        .grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .aside {
+        padding: 32px;
+        background: #f3f4f6;
+        border-right: 1px solid #e5e7eb;
+      }
+
+      .badge {
+        display: inline-block;
+        font-size: 12px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: white;
+        background: var(--accent);
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-weight: 700;
+      }
+
+      h1 {
+        margin: 14px 0 8px;
+        font-size: clamp(24px, 3vw, 32px);
+        line-height: 1.2;
+      }
+      .lead {
+        color: var(--muted);
+        margin: 0 0 18px;
+      }
+
+      .bullet {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        margin: 14px 0;
+        color: var(--text);
+      }
+      .dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background: var(--accent);
+        margin-top: 6px;
+      }
+
+      .contact-cards {
+        display: grid;
+        gap: 10px;
+        margin-top: 16px;
+      }
+      .chip {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        border: 1px solid #e5e7eb;
+        background: #fff;
+        padding: 10px 12px;
+        border-radius: 8px;
+        color: var(--muted);
+      }
+      .chip strong {
+        color: var(--text);
+      }
+
+      .form {
+        padding: 32px;
+        background: #fff;
+      }
+
+      .row {
+        display: grid;
+        gap: 22px; /* more spacing between inputs */
+        grid-template-columns: 1fr;
+        margin-bottom: 18px;
+      }
+      @media (min-width: 640px) {
+        .row.two {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .field {
+        position: relative;
+        display: block;
+      }
+      .field input,
+      .field textarea,
+      .field select {
+        width: 100%;
+        background: #ffffff00;
+        border: 1px solid #d1d5db;
+        color: var(--text);
+        border-radius: 8px;
+        padding: 18px 14px 14px 14px;
+        outline: none;
+        transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+      }
+      .field textarea {
+        resize: vertical;
+        min-height: 140px;
+      }
+
+      .field label {
+        position: absolute;
+        left: 12px;
+        top: 12px;
+        padding: 0 6px;
+        color: var(--muted);
+        background: #fff;
+        transform-origin: left top;
+        transition: transform 0.15s ease, color 0.2s ease, top 0.15s ease;
+        pointer-events: none;
+      }
+
+      .field input::placeholder,
+      .field textarea::placeholder {
+        opacity: 0;
+      }
+      .field input:placeholder-shown + label,
+      .field textarea:placeholder-shown + label {
+        transform: translateY(4px) scale(1);
+      }
+      .field input:not(:placeholder-shown) + label,
+      .field input:focus + label,
+      .field textarea:not(:placeholder-shown) + label,
+      .field textarea:focus + label {
+        top: -8px;
+        transform: scale(0.85);
+        color: var(--accent);
+      }
+
+      .field:focus-within input,
+      .field:focus-within textarea,
+      .field:focus-within select {
+        border-color: var(--ring);
+        box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+        background: #ffffff00;
+      }
+
+      .hint {
+        font-size: 12px;
+        color: var(--muted);
+        margin: 6px 2px 0;
+      }
+
+      .actions {
+        display: flex;
+        gap: 16px;
+        align-items: center;
+        justify-content: flex-end;
+        flex-wrap: wrap;
+        margin-top: 20px;
+      }
+      .check {
+        display: flex;
+        gap: 10px;
+        align-items: flex-start;
+        color: var(--muted);
+        font-size: 14px;
+        flex: 1 1 200px; /* ensures checkbox wraps nicely */
+      }
+      .check input {
+        margin-top: 3px;
+      }
+
+      button {
+        appearance: none;
+        border: 0;
+        cursor: pointer;
+        font-weight: 700;
+        padding: 14px 22px;
+        border-radius: 8px;
+        background: linear-gradient(90deg, var(--accent), var(--accent-600));
+        color: #fff;
+        transition: transform 0.06s ease, filter 0.2s ease;
+      }
+      button:active {
+        transform: translateY(1px);
+      }
+      button:disabled {
+        filter: grayscale(1) brightness(0.7);
+        cursor: not-allowed;
+      }
+
+      .status {
+        margin-top: 12px;
+        font-size: 14px;
+        padding: 10px 12px;
+        border-radius: 8px;
+        display: none;
+      }
+      .status.ok {
+        display: block;
+        background: rgba(16, 185, 129, 0.15);
+        border: 1px solid rgba(16, 185, 129, 0.4);
+        color: var(--ok);
+      }
+      .status.err {
+        display: block;
+        background: rgba(220, 38, 38, 0.15);
+        border: 1px solid rgba(220, 38, 38, 0.35);
+        color: var(--danger);
+      }
+      .header {
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .nav-brand h1 {
+        font-size: 1.8rem;
+        font-weight: 600;
+        color: #2c3e50;
+        letter-spacing: -0.5px;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #2c3e50;
+        font-weight: 500;
+        transition: color 0.3s ease;
+        position: relative;
+      }
+
+      .nav-link:hover {
+        color: #3498db;
+      }
+
+      .nav-link::after {
+        content: "";
+        position: absolute;
+        bottom: -5px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #3498db;
+        transition: width 0.3s ease;
+      }
+
+      .nav-link:hover::after {
+        width: 100%;
+      }
+
+      /* Responsive Design */
+
+      @media (max-width: 1200px) {
+        .grid {
+          margin-top: 130px;
+        }
+        html,
+        body {
+          height: 1000px;
+        }
+      }
+
+      @media (max-width: 992px) {
+        .section-title::before,
+        .section-title::after {
+          content: "";
+          display: none;
+        }
+        html,
+        body {
+          height: 1200px;
+        }
+      }
+      @media (max-width: 768px) {
+        .nav {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+        }
+        .grid {
+          margin-top: 150px;
+        }
+        .nav-menu {
+          gap: 1rem;
+        }
+        html,
+        body {
+          height: 1200px;
+        }
+      }
+      @media (max-width: 613px) {
+        .nav {
+          flex-direction: column;
+          gap: 1rem;
+          padding: 1rem;
+        }
+        .grid {
+          margin-top: 180px;
+        }
+        .nav-menu {
+          gap: 1rem;
+        }
+        html,
+        body {
+          height: 1200px;
+        }
+        .nav-brand {
+          text-align: center;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="header">
+      <nav class="nav">
+        <div class="nav-brand">
+          <h1>Tell us something, Let us grow into a better one</h1>
+        </div>
+        <ul class="nav-menu">
+          <li>
+            <a href="/destinations/tour.html" class="nav-link">Tour</a>
+          </li>
+          <li><a href="#destinations" class="nav-link">Destinations</a></li>
+          <li><a href="#book" class="nav-link">Book</a></li>
+          <li><a href="#contact" class="nav-link">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="wrap grid" role="main">
+      <aside class="aside">
+        <span class="badge" aria-hidden="true">Contact</span>
+        <h1>Let’s talk about our project</h1>
+        <p class="lead">
+          Fill out the form and we’ll get back to you within 24 hours.
+        </p>
+        <p style="font-size: smaller" class="lead">
+          Our email: tourism2025@gmail.com
+        </p>
+        <p style="font-size: smaller" class="lead">
+          Our facebook page: Tourism2025
+        </p>
+        <p style="font-size: smaller" class="lead">
+          Our Instagram page: Tourism2025
+        </p>
+      </aside>
+
+      <section class="form">
+        <form id="contactForm" novalidate>
+          <div class="row two">
+            <div class="field">
+              <input
+                id="name"
+                name="name"
+                type="text"
+                required
+                placeholder=" "
+              />
+              <label for="name">Full name</label>
+              <p class="hint">What should we call you?</p>
+            </div>
+            <div class="field">
+              <input
+                id="email"
+                name="email"
+                type="email"
+                required
+                placeholder=" "
+              />
+              <label for="email">Email address</label>
+              <p class="hint">We’ll only use this to reply.</p>
+            </div>
+          </div>
+
+          <div class="row two">
+            <div class="field">
+              <input id="phone" name="phone" type="tel" placeholder=" " />
+              <label for="phone">Phone (optional)</label>
+            </div>
+            <div class="field">
+              <select id="subject" name="subject" aria-label="Subject">
+                <option value="General">General</option>
+                <option value="Quote">Request a quote</option>
+                <option value="Support">Support</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="field">
+              <textarea
+                id="message"
+                name="message"
+                required
+                placeholder=" "
+              ></textarea>
+              <label for="message">Your message</label>
+              <p class="hint">Tell us a little about what you need.</p>
+            </div>
+          </div>
+
+          <div class="actions">
+            <label class="check">
+              <input id="agree" type="checkbox" required />
+              <span>I agree to the <a href="#">terms</a>.</span>
+            </label>
+            <button type="submit">Send message</button>
+          </div>
+
+          <p
+            id="formStatus"
+            class="status"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </form>
+      </section>
+    </main>
+
+    <script>
+      const form = document.getElementById("contactForm");
+      const statusEl = document.getElementById("formStatus");
+
+      form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        statusEl.className = "status";
+        if (!form.reportValidity()) {
+          statusEl.textContent = "Please fix the highlighted fields.";
+          statusEl.classList.add("err");
+          return;
+        }
+        await new Promise((r) => setTimeout(r, 500));
+        statusEl.textContent = "Thanks! Your message has been sent.";
+        statusEl.classList.add("ok");
+        form.reset();
+      });
+    </script>
+  </body>
+</html>
