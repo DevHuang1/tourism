@@ -398,6 +398,13 @@ body {
 }
 
 /* Responsive Design */
+
+@media (max-width: 1440px) {
+  .imgFor {
+    height: 300px;
+  }
+}
+
 @media (max-width: 768px) {
   .nav {
     flex-direction: column;
