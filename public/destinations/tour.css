@@ -282,8 +282,13 @@ body {
 }
 
 .card-description {
-  font-size: 0.95rem;
-  color: #7f8c8d;
+  font-size: 0.75rem;
+  color: #7f8c8dd9;
+  margin-bottom: 1rem;
+}
+.card-description-dest {
+  font-size: 0.8rem;
+  color: #7e8c8d;
   margin-bottom: 1rem;
 }
 

@@ -460,3 +460,16 @@ body {
     padding: 1.5rem;
   }
 }
+@media (max-width: 390px) {
+  .nav {
+    padding-left: 1px;
+  }
+  .nav-menu {
+    gap: 0.1rem;
+  }
+  ol,
+  ul {
+    padding-left: 0;
+    padding-right: 8px;
+  }
+}

@@ -139,8 +139,8 @@ body {
 
 /* Buttons */
 .btn-primary {
-  background: linear-gradient(135deg, #dae06d,#e9d229 );
-  color:(#000000); ;
+  background: linear-gradient(135deg, #dae06d, #e9d229);
+  color: (#000000);
   border: none;
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
@@ -466,5 +466,18 @@ body {
 
   .card-content {
     padding: 1.5rem;
+  }
+}
+@media (max-width: 390px) {
+  .nav {
+    padding-left: 1px;
+  }
+  .nav-menu {
+    gap: 0.1rem;
+  }
+  ol,
+  ul {
+    padding-left: 0;
+    padding-right: 8px;
   }
 }

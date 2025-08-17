@@ -383,6 +383,21 @@
         .grid {
           margin-top: 150px;
         }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+
+        .card-meta {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
       }
       @media (max-width: 613px) {
         .nav {
@@ -409,115 +424,314 @@
           text-align: center;
         }
       }
+      @media (max-width: 390px) {
+        .nav {
+          padding-left: 1px;
+        }
+        .nav-menu {
+          gap: 0.1rem;
+        }
+        ol,
+        ul {
+          padding-left: 0;
+          padding-right: 8px;
+        }
+      }
+
+      .footer {
+        background: #2c3e50;
+        color: white;
+        padding: 3rem 0 1rem;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        margin-bottom: 2rem;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .footer-brand p {
+        color: #bdc3c7;
+        line-height: 1.6;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-section h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #ecf0f1;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #3498db;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(52, 152, 219, 0.1);
+        border-radius: 50%;
+        color: #3498db;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: #3498db;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid #34495e;
+        text-align: center;
+        color: #95a5a6;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+        .page-content {
+          flex: 1;
+          display: flex;
+          flex-direction: column;
+          justify-content: center; /* center vertically when space allows */
+          margin-top: 50px;
+          padding-top: 200px;
+          padding-bottom: 150x;
+          padding-left: 24px;
+          padding-right: 24px;
+        }
+      }
+
+      /* Layout fix: make footer stick to bottom without hiding main */
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        display: flex;
+        flex-direction: column;
+      }
+
+      body {
+        /* reset conflicting centering */
+        align-items: unset !important;
+        justify-content: unset !important;
+        padding: 0 !important;
+      }
+
+      .page-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        padding: 24px; /* keep spacing around main content */
+      }
+
+      .footer {
+        margin-top: auto;
+      }
+
+      /* Ensure the contact form card stays visible and nicely centered */
+      .wrap {
+        margin: 40px auto;
+        max-width: 900px;
+        flex: 0 0 auto;
+      }
+
+      .page-content {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center; /* center vertically when space allows */
+        padding-top: 150px;
+        padding-bottom: 150x;
+        padding-left: 24px;
+        padding-right: 24px;
+        margin-bottom: 200px;
+      }
+      .headerLink {
+        text-decoration: none;
+        color: #2c3e50;
+
+        transition: color 0.4s ease;
+      }
+
+      .headerLink:hover {
+        color: #3498db;
+      }
+
+      .headerLink::after {
+        content: "";
+        position: absolute;
+        bottom: -2px;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: #3498db;
+        transition: width 0.4s ease;
+      }
+
+      .headerLink:hover::after {
+        width: 100%;
+      }
     </style>
   </head>
   <body>
-    <header class="header">
-      <nav class="nav">
-        <div class="nav-brand">
-          <h1>Tell us something, Let us grow into a better one</h1>
-        </div>
-        <ul class="nav-menu">
-          <li>
-            <a href="/destinations/tour.html" class="nav-link">Tour</a>
-          </li>
-          <li><a href="#destinations" class="nav-link">Destinations</a></li>
-          <li><a href="#book" class="nav-link">Book</a></li>
-          <li><a href="#contact" class="nav-link">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <main class="wrap grid" role="main">
-      <aside class="aside">
-        <span class="badge" aria-hidden="true">Contact</span>
-        <h1>Let’s talk about our project</h1>
-        <p class="lead">
-          Fill out the form and we’ll get back to you within 24 hours.
-        </p>
-        <p style="font-size: smaller" class="lead">
-          Our email: tourism2025@gmail.com
-        </p>
-        <p style="font-size: smaller" class="lead">
-          Our facebook page: Tourism2025
-        </p>
-        <p style="font-size: smaller" class="lead">
-          Our Instagram page: Tourism2025
-        </p>
-      </aside>
-
-      <section class="form">
-        <form id="contactForm" novalidate>
-          <div class="row two">
-            <div class="field">
-              <input
-                id="name"
-                name="name"
-                type="text"
-                required
-                placeholder=" "
-              />
-              <label for="name">Full name</label>
-              <p class="hint">What should we call you?</p>
-            </div>
-            <div class="field">
-              <input
-                id="email"
-                name="email"
-                type="email"
-                required
-                placeholder=" "
-              />
-              <label for="email">Email address</label>
-              <p class="hint">We’ll only use this to reply.</p>
-            </div>
+    <div class="page-content">
+      <header class="header">
+        <nav class="nav">
+          <div class="nav-brand">
+            <a class="headerLink" href="/home/home.html">
+              <h1 style="cursor: pointer">
+                Tell us something, Let us grow into a better one
+              </h1>
+            </a>
           </div>
+          <ul class="nav-menu">
+            <li>
+              <a href="/destinations/tour.html" class="nav-link">Tour</a>
+            </li>
+            <li><a href="#destinations" class="nav-link">Destinations</a></li>
+            <li><a href="#book" class="nav-link">Book</a></li>
+            <li><a href="#contact" class="nav-link">Contact</a></li>
+          </ul>
+        </nav>
+      </header>
 
-          <div class="row two">
-            <div class="field">
-              <input id="phone" name="phone" type="tel" placeholder=" " />
-              <label for="phone">Phone (optional)</label>
+      <main class="wrap grid" role="main">
+        <aside class="aside">
+          <span class="badge" aria-hidden="true">Contact</span>
+          <h1>Let’s talk about our project</h1>
+          <p class="lead">
+            Fill out the form and we’ll get back to you within 24 hours.
+          </p>
+          <p style="font-size: smaller" class="lead">
+            Our email: tourism2025@gmail.com
+          </p>
+          <p style="font-size: smaller" class="lead">
+            Our facebook page: Tourism2025
+          </p>
+          <p style="font-size: smaller" class="lead">
+            Our Instagram page: Tourism2025
+          </p>
+        </aside>
+
+        <section class="form">
+          <form id="contactForm" novalidate>
+            <div class="row two">
+              <div class="field">
+                <input
+                  id="name"
+                  name="name"
+                  type="text"
+                  required
+                  placeholder=" "
+                />
+                <label for="name">Full name</label>
+                <p class="hint">What should we call you?</p>
+              </div>
+              <div class="field">
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  placeholder=" "
+                />
+                <label for="email">Email address</label>
+                <p class="hint">We’ll only use this to reply.</p>
+              </div>
             </div>
-            <div class="field">
-              <select id="subject" name="subject" aria-label="Subject">
-                <option value="General">General</option>
-                <option value="Quote">Request a quote</option>
-                <option value="Support">Support</option>
-                <option value="Other">Other</option>
-              </select>
+
+            <div class="row two">
+              <div class="field">
+                <input id="phone" name="phone" type="tel" placeholder=" " />
+                <label for="phone">Phone (optional)</label>
+              </div>
+              <div class="field">
+                <select id="subject" name="subject" aria-label="Subject">
+                  <option value="General">General</option>
+                  <option value="Quote">Request a quote</option>
+                  <option value="Support">Support</option>
+                  <option value="Other">Other</option>
+                </select>
+              </div>
             </div>
-          </div>
 
-          <div class="row">
-            <div class="field">
-              <textarea
-                id="message"
-                name="message"
-                required
-                placeholder=" "
-              ></textarea>
-              <label for="message">Your message</label>
-              <p class="hint">Tell us a little about what you need.</p>
+            <div class="row">
+              <div class="field">
+                <textarea
+                  id="message"
+                  name="message"
+                  required
+                  placeholder=" "
+                ></textarea>
+                <label for="message">Your message</label>
+                <p class="hint">Tell us a little about what you need.</p>
+              </div>
             </div>
-          </div>
 
-          <div class="actions">
-            <label class="check">
-              <input id="agree" type="checkbox" required />
-              <span>I agree to the <a href="#">terms</a>.</span>
-            </label>
-            <button type="submit">Send message</button>
-          </div>
+            <div class="actions">
+              <label class="check">
+                <input id="agree" type="checkbox" required />
+                <span>I agree to the <a href="#">terms</a>.</span>
+              </label>
+              <button type="submit">Send message</button>
+            </div>
 
-          <p
-            id="formStatus"
-            class="status"
-            role="status"
-            aria-live="polite"
-          ></p>
-        </form>
-      </section>
-    </main>
+            <p
+              id="formStatus"
+              class="status"
+              role="status"
+              aria-live="polite"
+            ></p>
+          </form>
+        </section>
+      </main>
+    </div>
 
     <script>
       const form = document.getElementById("contactForm");
@@ -537,5 +751,66 @@
         form.reset();
       });
     </script>
+
+    <!-- Footer -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>Explore everywhere</h3>
+            <p>Your doorway to genuine experiences</p>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-section">
+              <a href="#alltours"><h4>All tours</h4></a>
+              <ul>
+                <li><a href="../Explore/">Myanmar</a></li>
+                <li>
+                  <a href="../Explore/Thailand/activitiesthailand.html"
+                    >Thailand</a
+                  >
+                </li>
+                <li><a href="../Explore/">Cambodia</a></li>
+                <li><a href="../Explore/">China</a></li>
+                <li><a href="../Explore/">Norway</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Utility</h4>
+              <ul>
+                <li><a href="#help">Help Center</a></li>
+                <li><a href="#contact">Contact Us</a></li>
+                <li><a href="#booking">Booking Guide</a></li>
+                <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Follow Us</h4>
+              <div class="social-links">
+                <a href="#facebook" class="social-link"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#twitter" class="social-link"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#instagram" class="social-link"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#youtube" class="social-link"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Explore the globe. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
