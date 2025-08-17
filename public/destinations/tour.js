@@ -28,63 +28,63 @@ function showCard() {
     if (input === "singapore") {
       const sg = document.querySelector(".Singapore");
       const cardImg = document.querySelector(".card-image");
-      sg.style.height = "600px";
+      sg.style.height = "650px";
       cardImg.style.height = "400px";
       sg.style.marginBottom = "70px";
     }
     if (input === "thailand") {
       const cardImg = document.querySelector(".thai-card");
       const thai = document.querySelector(".Thailand");
-      thai.style.height = "600px";
+      thai.style.height = "650px";
       cardImg.style.height = "400px";
       thai.style.marginBottom = "70px";
     }
     if (input === "japan") {
       const cardImg = document.querySelector(".jap-card");
       const jp = document.querySelector(".Japan");
-      jp.style.height = "600px";
+      jp.style.height = "650px";
       cardImg.style.height = "400px";
       jp.style.marginBottom = "70px";
     }
     if (input === "vietnam") {
       const cardImg = document.querySelector(".viet-card");
       const viet = document.querySelector(".Vietnam");
-      viet.style.height = "600px";
+      viet.style.height = "650px";
       cardImg.style.height = "400px";
       viet.style.marginBottom = "70px";
     }
     if (input === "china") {
       const cardImg = document.querySelector(".china-card");
       const china = document.querySelector(".China");
-      china.style.height = "600px";
+      china.style.height = "650px";
       cardImg.style.height = "400px";
       china.style.marginBottom = "70px";
     }
     if (input === "norway") {
       const cardImg = document.querySelector(".nor-card");
       const norway = document.querySelector(".Norway");
-      norway.style.height = "600px";
+      norway.style.height = "650px";
       cardImg.style.height = "400px";
       norway.style.marginBottom = "70px";
     }
     if (input === "switzerland") {
       const cardImg = document.querySelector(".swiz-card");
       const switzerland = document.querySelector(".Switzerland");
-      switzerland.style.height = "600px";
+      switzerland.style.height = "650px";
       cardImg.style.height = "400px";
       switzerland.style.marginBottom = "70px";
     }
     if (input === "myanmar") {
       const cardImg = document.querySelector(".myan-card");
       const myan = document.querySelector(".Myanmar");
-      myan.style.height = "600px";
+      myan.style.height = "650px";
       cardImg.style.height = "400px";
       myan.style.marginBottom = "70px";
     }
     if (input === "cambodia") {
       const cardImg = document.querySelector(".cam-card");
       const cam = document.querySelector(".Cambodia");
-      cam.style.height = "600px";
+      cam.style.height = "650px";
       cardImg.style.height = "400px";
       cam.style.marginBottom = "70px";
     }
@@ -101,7 +101,7 @@ Singapore.onclick = () => {
   headerBg.style.backgroundImage = "url('singapore.avif')";
 
   const cardImg = document.querySelector(".card-image");
-  sg.style.height = "600px";
+  sg.style.height = "650px";
   cardImg.style.height = "400px";
   sg.style.marginBottom = "70px";
 };
@@ -116,7 +116,7 @@ Thailand.onclick = () => {
   headerBg.style.backgroundImage = "url('images/thailand.jpg')";
   const cardImg = document.querySelector(".thai-card");
 
-  thai.style.height = "600px";
+  thai.style.height = "650px";
   cardImg.style.height = "400px";
   thai.style.marginBottom = "70px";
 };
@@ -131,7 +131,7 @@ Japan.onclick = () => {
   headerBg.style.backgroundImage = "url('images/japan.jpg')";
   const cardImg = document.querySelector(".jap-card");
 
-  jp.style.height = "600px";
+  jp.style.height = "650px";
   cardImg.style.height = "400px";
   jp.style.marginBottom = "70px";
 };
@@ -146,7 +146,7 @@ Vietnam.onclick = () => {
   headerBg.style.backgroundImage = "url('images/vietnam.jpg')";
   const cardImg = document.querySelector(".viet-card");
 
-  viet.style.height = "600px";
+  viet.style.height = "650px";
   cardImg.style.height = "400px";
   viet.style.marginBottom = "70px";
 };
@@ -160,7 +160,7 @@ Myanmar.onclick = () => {
   });
   headerBg.style.backgroundImage = "url('images/myanmar.jpg')";
   const cardImg = document.querySelector(".myan-card");
-  myan.style.height = "600px";
+  myan.style.height = "650px";
   cardImg.style.height = "400px";
   myan.style.marginBottom = "70px";
 };
@@ -174,7 +174,7 @@ China.onclick = () => {
   });
   headerBg.style.backgroundImage = "url('images/china.jpg')";
   const cardImg = document.querySelector(".china-card");
-  ch.style.height = "600px";
+  ch.style.height = "650px";
   cardImg.style.height = "400px";
   ch.style.marginBottom = "70px";
 };
@@ -188,7 +188,7 @@ Cambodia.onclick = () => {
   });
   headerBg.style.backgroundImage = "url('images/cambodia.jpg')";
   const cardImg = document.querySelector(".cam-card");
-  cam.style.height = "600px";
+  cam.style.height = "650px";
   cardImg.style.height = "400px";
   cam.style.marginBottom = "70px";
 };
@@ -202,7 +202,7 @@ Norway.onclick = () => {
   });
   headerBg.style.backgroundImage = "url('images/norway.jpg')";
   const cardImg = document.querySelector(".nor-card");
-  nor.style.height = "600px";
+  nor.style.height = "650px";
   cardImg.style.height = "400px";
   nor.style.marginBottom = "70px";
 };
@@ -216,7 +216,7 @@ Switzerland.onclick = () => {
   });
   headerBg.style.backgroundImage = "url('images/switzerland.jpg')";
   const cardImg = document.querySelector(".swiz-card");
-  swiz.style.height = "600px";
+  swiz.style.height = "650px";
   cardImg.style.height = "400px";
   swiz.style.marginBottom = "70px";
 };
