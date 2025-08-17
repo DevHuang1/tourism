@@ -139,8 +139,8 @@ body {
 
 /* Buttons */
 .btn-primary {
-  background: linear-gradient(135deg, #da6767, #c63434);
-  color: rgb(212, 199, 200);
+  background: linear-gradient(135deg, #b9739c, #ac4582, #b92b7e, #e10489);
+  color: (#000000);
   border: none;
   padding: 1rem 2.5rem;
   font-size: 1.1rem;
@@ -148,18 +148,18 @@ body {
   border-radius: 50px;
   cursor: pointer;
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(230, 237, 237, 0.3);
+  box-shadow: 0 4px 15px rgba(136, 236, 236, 0.3);
 }
 
 .btn-primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(214, 193, 4, 0.4);
+  box-shadow: 0 8px 25px rgba(201, 18, 116, 0.4);
   color: #0a0505;
 }
 
 .btn-book {
-  background: rgba(129, 133, 76, 0.9);
-  color: #bcc630;
+  background: rgba(192, 62, 134, 0.9);
+  color: #080704;
   border: none;
   padding: 0.8rem 2rem;
   font-size: 1rem;
@@ -173,7 +173,7 @@ body {
 }
 
 .btn-book:hover {
-  background: rgb(220, 223, 66);
+  background: rgb(206, 22, 142);
   transform: translateY(-2px);
   box-shadow: 0 8px 25px rgba(202, 201, 140, 0.493);
 }

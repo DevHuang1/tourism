@@ -100,7 +100,6 @@ body {
   height: 100%;
   object-fit: cover; /* ensures video covers entire area */
   z-index: 0;
-  filter: brightness(1.2);
 }
 
 .hero::before {
@@ -122,18 +121,18 @@ body {
 }
 
 .hero-title {
-  font-size: 3rem;
-  color: #faf1f1;
+  font-size: 3.6rem;
+  color: #ffffff;
   font-weight: 800;
-  margin-top: 150px;
+  margin-bottom: 1rem;
   letter-spacing: -1px;
 }
 
 .hero-subtitle {
   font-size: 1.4rem;
-  color: #f7f0f0;
+  color: #ffffff;
   font-weight: 550;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   line-height: 1.8;
 }
 

@@ -3,12 +3,30 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Discover Japan - Elegant Travel Destinations</title>
+    <title>Explore Japan- Wonderful Travel Destinations</title>
     <meta
       name="description"
-      content="Discover the most beautiful destinations in Japan"
+      content="Discover the most spectacular destinations in China"
+    />
+    <!-- from another Japan page -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&family=Poppins:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"
+      rel="stylesheet"
     />
 
+    <!-- from another Japan page -->
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -24,238 +42,305 @@
     />
 
     <!-- Custom CSS -->
-    <link rel="stylesheet" href="activitesjapan.css" />
+    <link rel="stylesheet" href="activitiesjapan.css" />
   </head>
   <body>
     <!-- Header -->
     <div class="hero-wrapper">
-      <header class="header">
-        <nav class="nav">
-          <div class="nav-brand">
-            <h1>Discover Japan</h1>
-          </div>
-          <ul class="nav-menu">
-            <li><a href="/destinations/tour.html" class="nav-link">Tour</a></li>
-            <li><a href="#destinations" class="nav-link">Destinations</a></li>
-            <li><a href="#book" class="nav-link">Book</a></li>
-            <li>
-              <a href="/contact/contact.html" class="nav-link">Contact</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
 
-      <section id="home" class="hero">
-        <div class="hero-content">
-          <h1 class="hero-title">Experience the Beauty of Japan</h1>
-          <p class="hero-subtitle">
-            Discover ancient traditions, stunning landscapes, and modern marvels
-            in the Land of the Rising Sun
-          </p>
-          <button class="btn-primary">Start Your Journey</button>
+
+        <header class="header">
+            <nav class="nav">
+                <div class="nav-brand">
+                    <h1>Wander through Japan</h1>
+                </div>
+              <ul class="nav-menu">
+                <li>
+                  <a href="/destinations/tour.html" class="nav-link">Tour</a>
+                </li>
+                <li><a href="#destinations" class="nav-link">Destinations</a></li>
+                <li><a href="#book" class="nav-link">Book</a></li>
+                <li><a href="/contact/contact.html" class="nav-link">Contact</a></li>
+              </ul>
+           </nav>
+        </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+
+      <!-- Background video -->
+      <video autoplay muted loop playsinline class="hero-video">
+        <source src="../Japan/5510394-hd_1920_1080_30fps.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+
+
+      <div class="hero-content">
+        <h1 class="hero-title">The Rhythm of Japan </h1>
+        <p class="hero-subtitle">
+            Discover ancient traditions, stunning landscapes, and modern marvels in the Land of the Rising Sun
+         </p>
+        <button class="btn-primary">Start Your Journey</button>
+      </div>
+    </section>
+
+    <section class="container my-5">
+      <h2
+        class="text-center mb-5"
+        style="
+          font-family: 'Poppins', sans-serif;
+
+          font-size: 1.8rem;
+          font-weight: 600;
+          color: #2c3e50;
+          letter-spacing: -0.5px;
+        "
+      >
+        Experience the Culture of Japan
+      </h2>
+
+      <!-- Card 1: Tradition -->
+      <div
+        class="card mb-5 p-3 border-0 shadow-lg rounded-4"
+        style="background-color: #ffffff"
+      >
+        <div class="row g-0 align-items-center" style="min-height: 350px">
+          <div class="col-md-6">
+            <img src="culture.jpg"
+              class="img-fluid h-100 rounded-end object-fit-cover imgFor"
+              style="object-fit: cover"
+              alt="Chinese Culture"
+            />
+          </div>
+          <div class="col-md-6 p-4">
+            <h2 class="card-title mb-3" style="color: rgb(123, 24, 24)">
+              Heritage of the Rising Sun
+            </h2>
+            <p class="card-text text-muted">
+                Japan's culture blends ancient traditions with vibrant celebrations,
+                where Shinto festivals light the streets with music,deance, and color.
+                Communities gather to honor the gods,carrying mikoshi and performing rituals that unite
+                spirituality with joy.Alongside tea ceremonies,calligraphy, and cherry blossoms,
+                these moments reveal the soulful essence of Japan.
+            </p>
+          </div>
         </div>
-      </section>
-    </div>
+      </div>
 
-    <!-- Featured Destinations -->
-    <section id="destinations" class="destinations">
-      <div class="container">
-        <div class="section-header">
-          <h2 class="section-title">Featured Destinations</h2>
-          <p class="section-subtitle">
-            Explore Japan's most captivating locations
-          </p>
+      <!-- Card 2: People -->
+      <div
+        class="card mb-5 p-3 border-0 shadow-lg rounded-4"
+        style="background-color: #ffffff"
+      >
+        <div
+          class="row g-0 align-items-center flex-md-row-reverse"
+          style="min-height: 350px"
+        >
+          <div class="col-md-6">
+            <img
+              src="japanesepeople.jpg"
+              class="img-fluid h-80 rounded-end object-fit-cover imgFor"
+              style="object-fit: cover"
+              alt="Norwegian People"
+            />
+          </div>
+          <div class="col-md-6 p-4">
+            <h2 class="card-title mb-3" style="color: rgb(123, 24, 24)">
+              Lovingly People
+            </h2>
+            <p class="card-text text-muted">
+               The Japanese are known for their politeness, discipline, and strong sense of community,
+                where respect for others is at the heart of daily life. Their customary greeting, a gentle bow,
+                 reflects humility and consideration, while their hospitality (omotenashi) shows genuine care for making others feel welcome.
+                Blending perseverance with kindness, they embody a character that is both disciplined and deeply warm.
+            </p>
+          </div>
         </div>
+      </div>
 
-        <div class="destinations-grid">
-          <!-- Mount Fuji -->
-          <div class="destination-card">
-            <div class="card-image">
-              <img src="mountfuji.jpg" alt="Mount Fuji" />
-              <div class="card-overlay">
-                <button class="btn-book">Book Now</button>
-              </div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Mount Fuji</h3>
-              <p class="card-description">
-                Japan's iconic sacred mountain offering breathtaking views and
-                spiritual experiences. Perfect for hiking and photography
-                enthusiasts.
-              </p>
-              <div class="card-meta">
-                <span class="location"
-                  ><i class="fas fa-map-marker-alt"></i> Honshu Island</span
-                >
-                <span class="duration"
-                  ><i class="fas fa-clock"></i> 2-3 Days</span
-                >
-              </div>
-            </div>
+      <!-- Card 3: Food -->
+      <div
+        class="card mb-5 p-3 border-0 shadow-lg rounded-4"
+        style="background-color: #ffffff"
+      >
+        <div class="row align-items-center" style="min-height: 350px">
+          <div class="col-md-6">
+            <img
+              src="food.jpg"
+              class="img-fluid h-120 rounded-end object-fit-cover imgFor"
+              style="object-fit: cover"
+              alt=" Japanese Cuisine"
+            />
           </div>
-
-          <!-- Kamakura -->
-          <div class="destination-card">
-            <div class="card-image">
-              <img src="kamakura.jpg" alt="Kamakura" />
-              <div class="card-overlay">
-                <button class="btn-book">Book Now</button>
-              </div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Kamakura</h3>
-              <p class="card-description">
-                Ancient capital filled with historic temples, the famous Great
-                Buddha statue, and serene bamboo groves perfect for
-                contemplation.
-              </p>
-              <div class="card-meta">
-                <span class="location"
-                  ><i class="fas fa-map-marker-alt"></i> Kanagawa
-                  Prefecture</span
-                >
-                <span class="duration"
-                  ><i class="fas fa-clock"></i> 1-2 Days</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Himeji Castle -->
-          <div class="destination-card">
-            <div class="card-image">
-              <img src="himejicastle.jpg" alt="Himeji Castle" />
-              <div class="card-overlay">
-                <button class="btn-book">Book Now</button>
-              </div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Himeji Castle</h3>
-              <p class="card-description">
-                UNESCO World Heritage site featuring Japan's finest original
-                castle architecture with elegant white walls and stunning cherry
-                blossoms.
-              </p>
-              <div class="card-meta">
-                <span class="location"
-                  ><i class="fas fa-map-marker-alt"></i> Hyogo Prefecture</span
-                >
-                <span class="duration"
-                  ><i class="fas fa-clock"></i> Half Day</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Ginza -->
-          <div class="destination-card">
-            <div class="card-image">
-              <img src="ginza.jpg" alt="Ginza" />
-              <div class="card-overlay">
-                <button class="btn-book">Book Now</button>
-              </div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Ginza</h3>
-              <p class="card-description">
-                Tokyo's premier luxury shopping district featuring high-end
-                boutiques, exquisite dining, and sophisticated nightlife
-                experiences.
-              </p>
-              <div class="card-meta">
-                <span class="location"
-                  ><i class="fas fa-map-marker-alt"></i> Tokyo</span
-                >
-                <span class="duration"
-                  ><i class="fas fa-clock"></i> 1-2 Days</span
-                >
-              </div>
-            </div>
-          </div>
-
-          <!-- Naoshima -->
-          <div class="destination-card">
-            <div class="card-image">
-              <img src="naoshima.jpg" alt="Naoshima" />
-              <div class="card-overlay">
-                <button class="btn-book">Book Now</button>
-              </div>
-            </div>
-            <div class="card-content">
-              <h3 class="card-title">Naoshima</h3>
-              <p class="card-description">
-                Art island paradise featuring world-class contemporary museums,
-                outdoor sculptures, and unique architectural installations.
-              </p>
-              <div class="card-meta">
-                <span class="location"
-                  ><i class="fas fa-map-marker-alt"></i> Seto Inland Sea</span
-                >
-                <span class="duration"
-                  ><i class="fas fa-clock"></i> 2-3 Days</span
-                >
-              </div>
-            </div>
+          <div class="col-md-6 p-4">
+            <h2 class="card-title mb-3" style="color: rgb(123, 24, 24)">
+                Culinary Treasures of Japan  
+            </h2>
+            <p class="card-text text-muted">
+                Freshness and balance lie at the heart of Japanese cuisine, where simple ingredients are elevated into artful dishes. Sushi, ramen, 
+                and miso soup highlight natural flavors, while rice and seasonal vegetables remain essential staples.
+                 Guided by the philosophy of washoku, meals are designed to create harmony in taste,
+                 nutrition, and presentation, making every dish both nourishing and beautiful.
+                </p>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- Featured Destinations -->
+    <section id="destinations" class="destinations">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Featured Destinations</h2>
+                <p class="section-subtitle">Explore Japan's most captivating locations</p>
+            </div>
+            
+            <div class="destinations-grid">
+                <!-- Mount Fuji -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="mountfuji.jpg" alt="Mount Fuji" />
+                        <div class="card-overlay">
+                            <button class="btn-book">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Mount Fuji</h3>
+                        <p class="card-description">Japan's iconic sacred mountain offering breathtaking views and spiritual experiences. Perfect for hiking and photography enthusiasts.</p>
+                        <div class="card-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Honshu Island</span>
+                            <span class="duration"><i class="fas fa-clock"></i> 2-3 Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Kamakura -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="kamakura.jpg"alt="Kamakura" />
+                        <div class="card-overlay">
+                            <button class="btn-book">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Kamakura</h3>
+                        <p class="card-description">Ancient capital filled with historic temples, the famous Great Buddha statue, and serene bamboo groves perfect for contemplation.</p>
+                        <div class="card-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Kanagawa Prefecture</span>
+                            <span class="duration"><i class="fas fa-clock"></i> 1-2 Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Himeji Castle -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="himejicastle.jpg" alt="Himeji Castle" />
+                        <div class="card-overlay">
+                            <button class="btn-book">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Himeji Castle</h3>
+                        <p class="card-description">UNESCO World Heritage site featuring Japan's finest original castle architecture with elegant white walls and stunning cherry blossoms.</p>
+                        <div class="card-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Hyogo Prefecture</span>
+                            <span class="duration"><i class="fas fa-clock"></i> Half Day</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Ginza -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="ginza.jpg" alt="Ginza" />
+                        <div class="card-overlay">
+                            <button class="btn-book">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Ginza</h3>
+                        <p class="card-description">Tokyo's premier luxury shopping district featuring high-end boutiques, exquisite dining, and sophisticated nightlife experiences.</p>
+                        <div class="card-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Tokyo</span>
+                            <span class="duration"><i class="fas fa-clock"></i> 1-2 Days</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Naoshima -->
+                <div class="destination-card">
+                    <div class="card-image">
+                        <img src="naoshima.jpg" alt="Naoshima" />
+                        <div class="card-overlay">
+                            <button class="btn-book">Book Now</button>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">Naoshima</h3>
+                        <p class="card-description">Art island paradise featuring world-class contemporary museums, outdoor sculptures, and unique architectural installations.</p>
+                        <div class="card-meta">
+                            <span class="location"><i class="fas fa-map-marker-alt"></i> Seto Inland Sea</span>
+                            <span class="duration"><i class="fas fa-clock"></i> 2-3 Days</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Footer -->
     <footer class="footer">
-      <div class="container">
-        <div class="footer-content">
-          <div class="footer-brand">
-            <h3>Discover Japan</h3>
-            <p>Your gateway to authentic Japanese experiences</p>
-          </div>
-
-          <div class="footer-links">
-            <div class="footer-section">
-              <h4>Destinations</h4>
-              <ul>
-                <li><a href="#mount-fuji">Mount Fuji</a></li>
-                <li><a href="#kamakura">Kamakura</a></li>
-                <li><a href="#himeji">Himeji Castle</a></li>
-                <li><a href="#ginza">Ginza</a></li>
-                <li><a href="#naoshima">Naoshima</a></li>
-              </ul>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <h3>Discover Japan</h3>
+                    <p>Your gateway to authentic Japanese experiences</p>
+                </div>
+                
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h4>Destinations</h4>
+                        <ul>
+                            <li><a href="#mount-fuji">Mount Fuji</a></li>
+                            <li><a href="#kamakura">Kamakura</a></li>
+                            <li><a href="#himeji">Himeji Castle</a></li>
+                            <li><a href="#ginza">Ginza</a></li>
+                            <li><a href="#naoshima">Naoshima</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Utility</h4>
+                        <ul>
+                            <li><a href="#help">Help Center</a></li>
+                            <li><a href="/contact/contact.html">Contact Us</a></li>
+                            <li><a href="#booking">Booking Guide</a></li>
+                            <li><a href="#faq">FAQ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <div class="footer-section">
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#facebook" class="social-link"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#twitter" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#instagram" class="social-link"><i class="fab fa-instagram"></i></a>
+                            <a href="#youtube" class="social-link"><i class="fab fa-youtube"></i></a>
+                        </div>
+                    </div>
+                </div>
             </div>
-
-            <div class="footer-section">
-              <h4>Utility</h4>
-              <ul>
-                <li><a href="#help">Help Center</a></li>
-                <li><a href="#contact">Contact Us</a></li>
-                <li><a href="#booking">Booking Guide</a></li>
-                <li><a href="#faq">FAQ</a></li>
-              </ul>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2024 Discover Japan. All rights reserved.</p>
             </div>
-
-            <div class="footer-section">
-              <h4>Follow Us</h4>
-              <div class="social-links">
-                <a href="#facebook" class="social-link"
-                  ><i class="fab fa-facebook-f"></i
-                ></a>
-                <a href="#twitter" class="social-link"
-                  ><i class="fab fa-twitter"></i
-                ></a>
-                <a href="#instagram" class="social-link"
-                  ><i class="fab fa-instagram"></i
-                ></a>
-                <a href="#youtube" class="social-link"
-                  ><i class="fab fa-youtube"></i
-                ></a>
-              </div>
-            </div>
-          </div>
         </div>
-
-        <div class="footer-bottom">
-          <p>&copy; 2024 Discover Japan. All rights reserved.</p>
-        </div>
-      </div>
     </footer>
-  </body>
+</body>
 </html>
+
+
+   
+
+    
