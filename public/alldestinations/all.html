@@ -1233,15 +1233,15 @@
             <div class="footer-section">
               <a href="#alltours"><h4>All tours</h4></a>
               <ul>
-                <li><a href="../Explore/">Myanmar</a></li>
+                <li><a href="/Explore/Myanmar/myanmar.html">Myanmar</a></li>
                 <li>
-                  <a href="../Explore/Thailand/activitiesthailand.html"
+                  <a href="/Explore/Thailand/activitiesthailand.html"
                     >Thailand</a
                   >
                 </li>
-                <li><a href="../Explore/">Cambodia</a></li>
-                <li><a href="../Explore/">China</a></li>
-                <li><a href="../Explore/">Norway</a></li>
+                <li><a href="/Explore/Cambodia/cambodia.html">Cambodia</a></li>
+                <li><a href="/Explore/China/activitieschina.html">China</a></li>
+                <li><a href="/Explore/Norway/activitiesnorway.html">Norway</a></li>
               </ul>
             </div>
 
@@ -1309,13 +1309,13 @@
       // Auto-scroll every 2s
       let autoScrollInterval = setInterval(autoScroll, 2000);
 
-      // Pause auto-scroll on hover/touch
+     
       grid.addEventListener("mouseenter", () => clearInterval(autoScrollInterval));
       grid.addEventListener("mouseleave", () => {
         autoScrollInterval = setInterval(autoScroll, 3000);
       });
 
-      // --- Swipe / drag support ---
+   
       let startX = 0, scrollLeft = 0, isDown = false;
 
       grid.addEventListener("mousedown", (e) => {
