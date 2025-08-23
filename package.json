@@ -16,5 +16,17 @@
   },
   "engines": {
     "node": ">=18"
+  },
+  "cors": {
+    "enabled": true,
+    "origin": [
+      "https://tourism-nine-tan.vercel.app/"
+    ],
+    "methods": [
+      "GET",
+      "POST",
+      "OPTIONS"
+    ],
+    "credentials": true
   }
 }
