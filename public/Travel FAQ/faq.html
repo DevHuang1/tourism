@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>TravelEase - FAQs</title>
+    <link rel="stylesheet" href="faq.css" />
+
+    <!-- Font Awesome for footer icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="hero-wrapper">
+      <header class="header">
+        <nav class="nav">
+          <div class="nav-brand">
+            <h1>Tourism</h1>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="/destinations/tour.html" class="nav-link">Tour</a></li>
+            <li>
+              <a href="/alldestinations/all.html" class="nav-link"
+                >Destinations</a
+              >
+            </li>
+            <li><a href="/book/book.html" class="nav-link">Book</a></li>
+            <li>
+              <a href="/contact/contact.html" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <header>
+        <h2>Travel FAQs</h2>
+        <p>Everything you need to know before, during, and after your trip</p>
+      </header>
+    </div>
+
+    <main>
+      <section class="faq-columns">
+        <!-- Column 1 -->
+        <div class="faq-column">
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              Do I need a visa to visit these countries?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              Visa rules depend on your nationality. Check the embassy website
+              or contact us for updated guidance to avoid last-minute surprises.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              What lodging options are available?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              We offer hotels suitable for every budget and preference.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              How can I get around in a new city?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              Choose from public transport, taxis, rideshare apps, or bike
+              rentals. We provide local guides and tips for easy navigation!
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              Should I carry cash or cards?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              A mix works best. Cards are widely accepted in cities, but carry
+              cash for markets, street vendors, and remote areas.
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 2 -->
+        <div class="faq-column">
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              How should I pack for different climates?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              Layering is key. Lightweight clothes for warm areas, a jacket for
+              cooler regions, and compact rain gear. Check local forecasts
+              before you pack!
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              How can I experience authentic local food?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              Visit local markets, family-run restaurants, and join food tours
+              for a true taste of the destination.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              What are the top Instagram-worthy spots?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              - Myanmar: Bagan sunrise with hot air balloons <br />- Japan:
+              Kyoto Fushimi Inari gates<br />- Switzerland: Lauterbrunnen
+              waterfalls
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              What local festivals should I experience?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              - Myanmar: Thingyan Water Festival<br />- Vietnam: Tet Lunar New
+              Year<br />- Japan: Gion Matsuri <br />- Switzerland: Fasnacht
+              Carnival
+            </div>
+          </div>
+        </div>
+
+        <!-- Column 3 -->
+        <div class="faq-column">
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              Unique souvenirs to buy?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              - Myanmar: Lacquerware & puppets<br />- Thailand: Silk & handmade
+              crafts <br />- Japan: Matcha & quirky gadgets<br />- Switzerland:
+              Swiss chocolate & watches
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              How do I respect local culture?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              Dress modestly for religious sites, learn simple local phrases,
+              and respect customs.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              Time zone tips for scheduling activities?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              Adjust to local time immediately upon arrival, schedule early
+              sightseeing, and avoid planning too much on the first day.
+            </div>
+          </div>
+
+          <div class="faq-card">
+            <div class="faq-question" onclick="toggleFAQ(this)">
+              How to stay safe during natural disasters?
+              <span class="chevron">❯</span>
+            </div>
+            <div class="faq-answer">
+              Research local emergency procedures for floods, typhoons, or
+              snowstorms. Follow alerts from local authorities.
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer (from contact.html) -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>Explore everywhere</h3>
+            <p>Your doorway to genuine experiences</p>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-section">
+              <a href="/destinations/tour.html"><h4>All tours</h4></a>
+              <ul>
+                <li><a href="/Explore/Myanmar/myanmar.html">Myanmar</a></li>
+                <li>
+                  <a href="/Explore/Thailand/activitiesthailand.html"
+                    >Thailand</a
+                  >
+                </li>
+                <li><a href="/Explore/Cambodia/cambodia.html">Cambodia</a></li>
+                <li><a href="/Explore/China/activitieschina.html">China</a></li>
+                <li>
+                  <a href="/Explore/Norway/activitiesnorway.html">Norway</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Utility</h4>
+              <ul>
+                <li><a href="#help">Help Center</a></li>
+                <li><a href="/contact/contact.html">Contact Us</a></li>
+                <li><a href="#booking">Booking Guide</a></li>
+                <li><a href="#faq">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Follow Us</h4>
+              <div class="social-links">
+                <a href="#facebook" class="social-link"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#twitter" class="social-link"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#instagram" class="social-link"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#youtube" class="social-link"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Explore the globe. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      function toggleFAQ(element) {
+        const answer = element.nextElementSibling;
+        answer.classList.toggle("open");
+        element.querySelector(".chevron").classList.toggle("rotate");
+      }
+    </script>
+    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+    <script
+      src="https://files.bpcontent.cloud/2025/08/22/15/20250822154732-L4Z8W94Y.js"
+      defer
+    ></script>
+  </body>
+</html>

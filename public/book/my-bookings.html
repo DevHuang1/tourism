@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>My Bookings</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f6fa;
+        padding: 20px;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #004aad;
+        font-size: 28px;
+        font-weight: 700;
+      }
+      h2 {
+        text-align: center;
+        margin-bottom: 20px;
+        color: #004aad;
+      }
+
+      button {
+        display: block;
+        margin: 20px auto;
+        padding: 10px 20px;
+        background: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+      }
+      button:hover {
+        background: #d32f2f;
+      }
+      .delete-btn {
+        margin-top: 10px;
+        padding: 8px 14px;
+        background: #f44336;
+        color: #fff;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        font-size: 14px;
+        font-weight: 600;
+        transition: 0.2s;
+      }
+      .delete-btn:hover {
+        background: #d32f2f;
+        transform: scale(1.05);
+      }
+
+      .booking-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+        margin: 15px auto;
+        max-width: 600px;
+        font-family: "Segoe UI", sans-serif;
+      }
+      .booking-card strong {
+        color: #004aad;
+      }
+      .delete-btn {
+        align-self: flex-end;
+        background: #f44336;
+        color: #fff;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.2s, background 0.2s;
+      }
+      .delete-btn:hover {
+        background: #d32f2f;
+        transform: scale(1.05);
+      }
+    </style>
+  </head>
+  <body>
+    <h2>My Bookings</h2>
+    <div id="bookingsList"></div>
+    <button onclick="clearBookings()">Clear All Bookings</button>
+    <button onclick="window.location.href='book.html'">Back to Flights</button>
+
+    <script>
+      function loadBookings() {
+        const list = document.getElementById("bookingsList");
+        list.innerHTML = "";
+        const bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+
+        if (!bookings.length) {
+          list.innerHTML =
+            "<p style='text-align:center;color:#666;'>No bookings yet.</p>";
+          return;
+        }
+
+        bookings.forEach((b, index) => {
+          const div = document.createElement("div");
+          div.className = "booking-card";
+          div.innerHTML = `
+      <p><strong>${b.airline}</strong> - ${b.city}</p>
+      <p><strong>Date:</strong> ${
+        b.date || "N/A"
+      } | <strong>Passengers:</strong> ${b.passengers}</p>
+      <p><strong>Price:</strong> ${b.price || "N/A"}</p>
+      <p><strong>Name:</strong> ${b.name}</p>
+      <button class="delete-btn">❌ Delete</button>
+    `;
+          div.querySelector(".delete-btn").addEventListener("click", () => {
+            deleteBooking(index);
+          });
+          list.appendChild(div);
+        });
+      }
+
+      function deleteBooking(index) {
+        let bookings = JSON.parse(localStorage.getItem("bookings") || "[]");
+        bookings.splice(index, 1); // remove 1 booking
+        localStorage.setItem("bookings", JSON.stringify(bookings));
+        loadBookings();
+      }
+
+      function clearBookings() {
+        localStorage.removeItem("bookings");
+        loadBookings();
+      }
+      loadBookings();
+    </script>
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+    <script
+      src="https://files.bpcontent.cloud/2025/08/22/15/20250822154732-L4Z8W94Y.js"
+      defer
+    ></script>
+  </body>
+</html>

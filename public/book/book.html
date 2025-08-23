@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flight Packages</title>
+    <!-- Font Awesome for footer icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+    />
+    <style>
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden; /* ✅ stops horizontal scroll */
+      }
+
+      body {
+        font-family: Arial, sans-serif;
+        background: #f5f6fa;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }
+      .main-content {
+        flex: 1; /* fills available space */
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 20px;
+        gap: 20px;
+      }
+
+      h2 {
+        text-align: center;
+        margin-bottom: 10px;
+      }
+
+      .filter-bar {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+        margin-bottom: 20px;
+        flex-wrap: wrap;
+      }
+      .filter-bar select {
+        padding: 10px 15px;
+        font-size: 14px;
+        border-radius: 8px;
+        border: 1px solid #ccc;
+        background: #fff;
+        min-width: 180px;
+        cursor: pointer;
+      }
+
+      /* Responsive grid for cards */
+      .results {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 25px;
+        width: 100%;
+        max-width: 1300px;
+      }
+      .flight-card {
+        background: #fff;
+        border: 1px solid #e0e0e0;
+        border-radius: 12px;
+        padding: 20px;
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      }
+      .flight-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+      .airline {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      .airline-logo {
+        width: 40px;
+        height: 40px;
+        object-fit: contain; /* keeps logo proportions */
+        border-radius: 50%; /* optional: makes it circular */
+      }
+
+      .airline-name {
+        font-weight: 500;
+        font-size: 15px;
+      }
+      .price {
+        font-size: 18px;
+        font-weight: bold;
+        color: #004aad;
+      }
+
+      .flight-time {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-top: 1px dashed #ccc;
+        padding-top: 10px;
+      }
+      .time-block {
+        text-align: center;
+      }
+      .time {
+        font-size: 16px;
+        font-weight: 600;
+      }
+      .airport {
+        font-size: 12px;
+        color: #555;
+      }
+      .duration {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        font-size: 13px;
+        color: #666;
+      }
+      .line {
+        width: 100px;
+        height: 1px;
+        background: #ccc;
+        margin: 5px 0;
+        position: relative;
+      }
+      .line::after {
+        content: "✈";
+        position: absolute;
+        top: -10px;
+        left: 50%;
+        transform: translateX(-50%);
+        font-size: 14px;
+      }
+
+      /* Package carousel */
+      .package-section {
+        position: relative;
+        background: #f9fafc;
+        border-radius: 10px;
+        padding: 15px;
+        overflow: hidden;
+      }
+      .package-title {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+      .package-container {
+        display: flex;
+        gap: 12px;
+        overflow-x: auto;
+        scroll-behavior: smooth;
+        scrollbar-width: none;
+        scroll-snap-type: x mandatory;
+      }
+      .package-container::-webkit-scrollbar {
+        display: none;
+      }
+      .package-card {
+        min-width: 180px;
+        background: #fff;
+        border: 1px solid #ddd;
+        border-radius: 10px;
+        padding: 10px;
+        flex-shrink: 0;
+        scroll-snap-align: start;
+      }
+      .package-card h4 {
+        margin: 0 0 5px;
+        font-size: 14px;
+      }
+      .package-card p {
+        margin: 2px 0;
+        font-size: 12px;
+        color: #555;
+      }
+
+      .buy-btn {
+        align-self: flex-end;
+        background: #004aad;
+        color: #fff;
+        border: none;
+        padding: 8px 18px;
+        border-radius: 20px;
+        font-size: 14px;
+        cursor: pointer;
+        font-weight: 600;
+      }
+
+      /* Modal styles */
+      /* Modal overlay */
+      .modal {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        justify-content: center;
+        align-items: center;
+        z-index: 1000;
+        animation: fadeIn 0.3s ease;
+        overflow-y: auto; /* ✅ allow scrolling if content too tall */
+      }
+      @media (max-width: 480px) {
+        .modal-content {
+          width: 100%;
+          height: 100%;
+          max-height: 100vh; /* fill screen */
+          border-radius: 0; /* full screen modal on mobile */
+          padding: 15px;
+        }
+      }
+
+      .modal-content {
+        background: #fff;
+        border-radius: 15px;
+        padding: 20px;
+        width: 95%;
+        max-width: 600px;
+        max-height: 90vh; /* ✅ prevent overflow */
+        overflow-y: auto; /* ✅ scroll inside modal if needed */
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+        animation: scaleIn 0.35s ease;
+        font-family: "Segoe UI", Tahoma, sans-serif;
+      }
+
+      .modal-header h3 {
+        margin: 0;
+        font-size: 24px;
+        color: #004aad;
+        font-weight: 700;
+      }
+      .close-icon {
+        font-size: 26px;
+        font-weight: bold;
+        color: #aaa;
+        cursor: pointer;
+        transition: 0.2s;
+      }
+      .close-icon:hover {
+        color: #333;
+        transform: scale(1.2);
+      }
+
+      .modal label {
+        display: block;
+        margin-top: 15px;
+        font-size: 15px;
+        color: #333;
+      }
+      .modal input {
+        width: 100%;
+        padding: 12px;
+        margin-top: 6px;
+        border: 1px solid #ccc;
+        border-radius: 10px;
+        font-size: 15px;
+        transition: all 0.2s ease;
+      }
+      .modal input:focus {
+        border-color: #004aad;
+        box-shadow: 0 0 5px rgba(0, 74, 173, 0.3);
+        outline: none;
+      }
+
+      .modal-buttons {
+        margin-top: 20px;
+        display: flex;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+      .modal-buttons button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 8px;
+        font-size: 15px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: transform 0.2s, background 0.2s;
+      }
+      .confirm-btn {
+        background: #004aad;
+        color: #fff;
+      }
+      .confirm-btn:hover {
+        background: #00337a;
+        transform: scale(1.05);
+      }
+      .cancel-btn {
+        background: #ddd;
+        color: #333;
+      }
+      .cancel-btn:hover {
+        background: #bbb;
+        transform: scale(1.05);
+      }
+
+      .success-message {
+        margin-top: 20px;
+        padding: 12px;
+        background: #e8f5e9;
+        color: #2e7d32;
+        border-radius: 10px;
+        font-size: 16px;
+        display: none;
+        animation: popIn 0.4s ease;
+        text-align: center;
+        font-weight: 600;
+      }
+
+      @keyframes fadeIn {
+        from {
+          opacity: 0;
+        }
+        to {
+          opacity: 1;
+        }
+      }
+      @keyframes scaleIn {
+        from {
+          transform: scale(0.85);
+          opacity: 0;
+        }
+        to {
+          transform: scale(1);
+          opacity: 1;
+        }
+      }
+      @keyframes popIn {
+        0% {
+          transform: scale(0.8);
+          opacity: 0;
+        }
+        80% {
+          transform: scale(1.1);
+          opacity: 1;
+        }
+        100% {
+          transform: scale(1);
+        }
+      } /* ✅ Navigation bar full width */
+      .header,
+      .hero-wrapper {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      .results {
+        padding: 0 1rem; /* prevents overflow on small screens */
+      }
+
+      .nav {
+        display: flex;
+        justify-content: space-around; /* brand left, menu right */
+        align-items: center;
+        padding: 0.9rem 2.2rem;
+        width: 100%; /* full width */
+        max-width: 100%; /* prevent shrinking */
+        background: #ffffff;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+        position: sticky;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 1000;
+      }
+      @media (max-width: 768px) {
+        .nav {
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 1rem;
+        }
+
+        .nav-menu {
+          flex-direction: flex;
+          width: 100%;
+          gap: 1rem;
+          margin-top: 0.5rem;
+        }
+
+        .nav-brand {
+          width: 100%;
+          text-align: left;
+        }
+      }
+      .nav-brand h1 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        color: #1f2937;
+        margin: 0;
+      }
+
+      .nav-menu {
+        display: flex;
+        list-style: none;
+        gap: 2rem;
+        margin: 0;
+        padding: 0;
+      }
+
+      .nav-link {
+        text-decoration: none;
+        color: #1f2937;
+        font-weight: 500;
+        transition: color 0.3s ease;
+      }
+      .nav-link:hover {
+        color: #2563eb;
+      }
+
+      /* Footer (from contact.html) */
+      .footer {
+        background: #2c3e50;
+        color: white;
+        padding: 1.5rem 1rem; /* smaller padding */
+        width: 100%;
+        margin-top: auto;
+      }
+
+      .footer-content {
+        display: grid;
+        grid-template-columns: 1fr 2fr;
+        gap: 3rem;
+        margin-bottom: 2rem;
+        padding: 2rem;
+      }
+
+      .footer-brand h3 {
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .footer-brand p {
+        color: #bdc3c7;
+        line-height: 1.6;
+      }
+
+      .footer-links {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 2rem;
+      }
+
+      .footer-section h4 {
+        font-size: 1.1rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+        color: #ecf0f1;
+      }
+
+      .footer-section ul {
+        list-style: none;
+      }
+
+      .footer-section ul li {
+        margin-bottom: 0.5rem;
+      }
+
+      .footer-section a {
+        color: #bdc3c7;
+        text-decoration: none;
+        transition: color 0.3s ease;
+      }
+
+      .footer-section a:hover {
+        color: #3498db;
+      }
+
+      .social-links {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .social-link {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        background: rgba(52, 152, 219, 0.1);
+        border-radius: 50%;
+        color: #3498db;
+        transition: all 0.3s ease;
+      }
+
+      .social-link:hover {
+        background: #3498db;
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      .footer-bottom {
+        padding-top: 2rem;
+        border-top: 1px solid #34495e;
+        text-align: center;
+        color: #95a5a6;
+        font-size: 0.9rem;
+      }
+
+      @media (max-width: 768px) {
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+
+      /* ✅ Responsive */
+      @media (max-width: 768px) {
+        .nav {
+          flex-direction: column; /* Stack items vertically */
+          padding: 1rem;
+        }
+
+        .nav-brand {
+          width: 100%;
+          text-align: center;
+          margin-bottom: 1rem;
+        }
+
+        .nav-menu {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+          gap: 1rem;
+        }
+
+        .faq-columns {
+          flex-direction: column;
+        }
+
+        .footer-content {
+          grid-template-columns: 1fr;
+          gap: 2rem;
+        }
+
+        .footer-links {
+          grid-template-columns: 1fr;
+          gap: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- ✅ Navigation -->
+    <div class="hero-wrapper">
+      <header class="header">
+        <nav class="nav">
+          <div class="nav-brand">
+            <h1>Tourism</h1>
+          </div>
+          <ul class="nav-menu">
+            <li><a href="/destinations/tour.html" class="nav-link">Tour</a></li>
+            <li>
+              <a href="/alldestinations/all.html" class="nav-link"
+                >Destinations</a
+              >
+            </li>
+            <li><a href="/book/book.html" class="nav-link">Book</a></li>
+            <li>
+              <a href="/contact/contact.html" class="nav-link">Contact</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+    </div>
+    <div class="main-content">
+      <h2>Find Your Trip</h2>
+      <!-- Add after <h2>Find Your Trip</h2> -->
+      <button
+        onclick="window.location.href='my-bookings.html'"
+        style="
+          background: #004aad;
+          color: #fff;
+          border: none;
+          padding: 10px 20px;
+          border-radius: 8px;
+          cursor: pointer;
+        "
+      >
+        My Bookings
+      </button>
+
+      <div class="filter-bar">
+        <select id="countrySelect">
+          <option value="">-- All Countries --</option>
+        </select>
+        <select id="citySelect">
+          <option value="">-- All Cities --</option>
+        </select>
+        <select id="destinationSelect">
+          <option value="">-- All Destinations --</option>
+        </select>
+      </div>
+
+      <div id="results" class="results"></div>
+    </div>
+
+    <!-- Booking Modal -->
+    <div id="bookingModal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Booking Information</h3>
+          <span class="close-icon" onclick="closeModal()">&times;</span>
+        </div>
+        <div id="flightInfo"></div>
+        <form id="bookingForm">
+          <label>Name:<input type="text" id="nameInput" required /></label>
+          <label>Email:<input type="email" id="emailInput" required /></label>
+          <label>Phone:<input type="tel" id="phoneInput" required /></label>
+          <label
+            >Credit Card:<input type="text" id="cardInput" required
+          /></label>
+          <label
+            >Travel Date:<input type="date" id="dateInput" required
+          /></label>
+          <label
+            >Passengers:<input
+              type="number"
+              id="passengersInput"
+              value="1"
+              min="1"
+          /></label>
+          <div class="modal-buttons">
+            <button type="button" class="cancel-btn">Cancel</button>
+            <button type="submit" class="confirm-btn">Confirm</button>
+          </div>
+        </form>
+        <div class="success-message" id="successMessage">
+          ✅ Booking Confirmed! Thank you.
+        </div>
+      </div>
+    </div>
+
+    <!-- My Bookings Section -->
+    <div id="bookingsSection">
+      <div id="bookingsList"></div>
+    </div>
+
+    <script>
+      const countries = {
+        Singapore: {
+          cities: {
+            Singapore: [
+              "Marina Bay Sands",
+              "Gardens by the Bay",
+              "Merlion Park",
+              "S.E.A. Aquarium",
+              "Universal Studios Singapore",
+            ],
+          },
+        },
+        China: {
+          cities: {
+            Beijing: ["The Great Wall", "Forbidden City"],
+            Shanghai: [], // empty -> will fallback
+            Chongqing: [],
+            Lijiang: [],
+          },
+        },
+        Vietnam: {
+          cities: {
+            "Da Nang": ["The Golden Bridge"],
+            "Ho Chi Minh City": [],
+            "Ha Long": ["Ha Long Bay"],
+            "Mũi Né": ["Mũi Né Sand Dunes"],
+            Sapa: [],
+          },
+        },
+        Thailand: {
+          cities: {
+            Bangkok: ["Wat Arun", "King Power Mahanakhon", "The Grand Palace"],
+            "Chiang Rai": ["White Temple"],
+            Krabi: [],
+          },
+        },
+        Switzerland: {
+          cities: {
+            Interlaken: [],
+            Lauterbrunnen: [],
+            "Kander Valley": ["Lake Blausee"],
+            Bern: [],
+            "St. Moritz": [],
+          },
+        },
+        Cambodia: {
+          cities: {
+            "Siem Reap": ["Angkor Wat", "Bayon Temple"],
+            "Phnom Penh": [],
+            Sihanoukville: [],
+            "Tonle Sap": [],
+          },
+        },
+        Norway: {
+          cities: {
+            Tromsø: [],
+            Hjørundfjord: ["Hjørundgjorden"],
+            Lofoten: [],
+            Loen: ["Loen Skylift"],
+            Odda: ["Trolltunga"],
+          },
+        },
+        Japan: {
+          cities: {
+            Tokyo: ["Ginza"],
+            Fujiyoshida: ["Mount Fuji"],
+            Kamakura: [],
+            Himeji: ["Himeji Castle"],
+            Naoshima: [],
+          },
+        },
+      };
+
+      const flights = [
+        {
+          airline: "Singapore Airlines",
+          price: "MMK 850,000",
+          from: { time: "13:45", code: "RGN" },
+          to: { time: "17:00", code: "SIN", city: "Singapore" },
+          duration: "3h 15m",
+        },
+        {
+          airline: "Air China",
+          price: "MMK 1,100,000",
+          from: { time: "08:00", code: "RGN" },
+          to: { time: "13:30", code: "PEK", city: "Beijing" },
+          duration: "5h 30m",
+        },
+        {
+          airline: "Vietnam Airlines",
+          price: "MMK 950,000",
+          from: { time: "10:00", code: "RGN" },
+          to: { time: "12:30", code: "SGN", city: "Ho Chi Minh City" },
+          duration: "2h 30m",
+        },
+        {
+          airline: "Thai Airways",
+          price: "MMK 720,000",
+          from: { time: "09:00", code: "RGN" },
+          to: { time: "11:15", code: "BKK", city: "Bangkok" },
+          duration: "2h 15m",
+        },
+        {
+          airline: "Swiss Intl Air",
+          price: "MMK 2,300,000",
+          from: { time: "22:00", code: "RGN" },
+          to: { time: "06:30", code: "ZRH", city: "Bern" },
+          duration: "12h 30m",
+        },
+        {
+          airline: "Cambodia Angkor Air",
+          price: "MMK 800,000",
+          from: { time: "07:00", code: "RGN" },
+          to: { time: "09:00", code: "PNH", city: "Phnom Penh" },
+          duration: "2h 00m",
+        },
+        {
+          airline: "Norwegian Air",
+          price: "MMK 2,500,000",
+          from: { time: "23:00", code: "RGN" },
+          to: { time: "08:00", code: "TOS", city: "Tromsø" },
+          duration: "11h 00m",
+        },
+        {
+          airline: "ANA",
+          price: "MMK 1,200,000",
+          from: { time: "23:00", code: "RGN" },
+          to: { time: "07:00", code: "HND", city: "Tokyo" },
+          duration: "7h 00m",
+        },
+      ];
+
+      const countrySelect = document.getElementById("countrySelect"),
+        citySelect = document.getElementById("citySelect"),
+        destinationSelect = document.getElementById("destinationSelect"),
+        results = document.getElementById("results"),
+        modal = document.getElementById("bookingModal"),
+        flightInfo = document.getElementById("flightInfo"),
+        bookingForm = document.getElementById("bookingForm"),
+        successMessage = document.getElementById("successMessage"),
+        bookingsList = document.getElementById("bookingsList");
+
+      let currentFlight = null,
+        currentPackages = [];
+      let bookings = [];
+
+      function populateFilters() {
+        for (const [country, data] of Object.entries(countries)) {
+          countrySelect.innerHTML += `<option value="${country}">${country}</option>`;
+          for (const [city, dests] of Object.entries(data.cities)) {
+            const safeDests = dests.length ? dests : [city]; // fallback
+            citySelect.innerHTML += `<option value="${city}">${city} (${country})</option>`;
+            safeDests.forEach((dest) => {
+              destinationSelect.innerHTML += `<option value="${dest}">${dest} (${city})</option>`;
+            });
+          }
+        }
+      }
+
+      function getCountryForCity(city) {
+        for (const [country, data] of Object.entries(countries)) {
+          if (city in data.cities) return country;
+        }
+        return "";
+      }
+      function createFlightCard(f, destFilter = "") {
+        const allPackages =
+          countries[getCountryForCity(f.to.city)]?.cities[f.to.city];
+        const safePackages =
+          allPackages && allPackages.length ? allPackages : [f.to.city];
+        const packages = destFilter
+          ? safePackages.filter((p) => p === destFilter)
+          : safePackages;
+
+        // Convert airline name into filename (e.g., "Singapore Airlines" → singapore_airlines.png)
+        const logoFile = f.airline.toLowerCase().replace(/\s+/g, "_") + ".png";
+
+        const card = document.createElement("div");
+        card.className = "flight-card";
+        card.innerHTML = `
+    <div class="flight-header">
+      <div class="airline">
+        <img src="images/${logoFile}" alt="${f.airline}" class="airline-logo" />
+        <div class="airline-name">${f.airline}</div>
+      </div>
+      <div class="price">${f.price}</div>
+    </div>
+    <div class="flight-time">
+      <div class="time-block"><div class="time">${
+        f.from.time
+      }</div><div class="airport">${f.from.code}</div></div>
+      <div class="duration"><div>Non-stop</div><div class="line"></div><div>${
+        f.duration
+      }</div></div>
+      <div class="time-block"><div class="time">${
+        f.to.time
+      }</div><div class="airport">${f.to.code}</div></div>
+    </div>
+    <div class="package-section">
+      <div class="package-title">Packages in ${f.to.city}</div>
+      <div class="package-container">
+        ${packages
+          .map(
+            (p) =>
+              `<div class="package-card"><h4>${p}</h4><p>Duration: 1 week</p><p>Hotel + Flight</p></div>`
+          )
+          .join("")}
+      </div>
+    </div>
+    <button class="buy-btn">Buy Now</button>
+  `;
+        card
+          .querySelector(".buy-btn")
+          .addEventListener("click", () => openBooking(f, packages));
+        return card;
+      }
+
+      function generateDummyFlight(cityName, country) {
+        let airline = "Charter Air";
+        let price = "MMK 500,000";
+        let duration = "3h";
+        let toCode = cityName.substring(0, 3).toUpperCase();
+
+        switch (country) {
+          case "China":
+            airline = "China Eastern";
+            price = "MMK 900,000";
+            duration = "3h 30m";
+            break;
+          case "Vietnam":
+            airline = "Vietnam Local Air";
+            price = "MMK 750,000";
+            duration = "2h 15m";
+            break;
+          case "Thailand":
+            airline = "Thai Smile Airways";
+            price = "MMK 700,000";
+            duration = "2h";
+            break;
+          case "Switzerland":
+            airline = "Swiss Alpine Air";
+            price = "MMK 2,300,000";
+            duration = "12h 45m";
+            break;
+          case "Cambodia":
+            airline = "Cambodia Connect";
+            price = "MMK 800,000";
+            duration = "2h";
+            break;
+          case "Norway":
+            airline = "Norwegian Air Local";
+            price = "MMK 2,500,000";
+            duration = "11h";
+            break;
+          case "Japan":
+            airline = "Japan Local Air";
+            price = "MMK 1,200,000";
+            duration = "7h";
+            break;
+        }
+
+        return {
+          airline,
+          price,
+          from: { time: "09:00", code: "RGN" },
+          to: { time: "12:00", code: toCode, city: cityName },
+          duration,
+        };
+      }
+
+      function generateDummyFlight(cityName, country) {
+        let airline = "Charter Air";
+        let price = "MMK 500,000";
+        let duration = "3h";
+        let toCode = cityName.substring(0, 3).toUpperCase();
+
+        switch (country) {
+          case "China":
+            airline = "China Eastern";
+            price = "MMK 900,000";
+            duration = "3h 30m";
+            break;
+          case "Vietnam":
+            airline = "Vietnam Local Air";
+            price = "MMK 750,000";
+            duration = "2h 15m";
+            break;
+          case "Thailand":
+            airline = "Thai Smile Airways";
+            price = "MMK 700,000";
+            duration = "2h";
+            break;
+          case "Switzerland":
+            airline = "Swiss Alpine Air";
+            price = "MMK 2,300,000";
+            duration = "12h 45m";
+            break;
+          case "Cambodia":
+            airline = "Cambodia Connect";
+            price = "MMK 800,000";
+            duration = "2h";
+            break;
+          case "Norway":
+            airline = "Norwegian Air Local";
+            price = "MMK 2,500,000";
+            duration = "11h";
+            break;
+          case "Japan":
+            airline = "Japan Local Air";
+            price = "MMK 1,200,000";
+            duration = "7h";
+            break;
+          case "Singapore":
+            airline = "Singapore Regional";
+            price = "MMK 850,000";
+            duration = "3h 15m";
+            break;
+        }
+
+        return {
+          airline,
+          price,
+          from: { time: "09:00", code: "RGN" },
+          to: { time: "12:00", code: toCode, city: cityName },
+          duration,
+        };
+      }
+
+      function renderFlights() {
+        results.innerHTML = "";
+        const country = countrySelect.value,
+          city = citySelect.value,
+          dest = destinationSelect.value;
+
+        let filteredFlights = [...flights]; // start with existing flights
+
+        // Add fallback "flights" for cities not in flights
+        for (const [c, data] of Object.entries(countries)) {
+          for (const cityName of Object.keys(data.cities)) {
+            const exists = flights.some((f) => f.to.city === cityName);
+            if (!exists) {
+              filteredFlights.push(generateDummyFlight(cityName, c));
+            }
+          }
+        }
+
+        // Apply filters
+        if (country) {
+          const validCities = Object.keys(countries[country].cities);
+          filteredFlights = filteredFlights.filter((f) =>
+            validCities.includes(f.to.city)
+          );
+        }
+        if (city)
+          filteredFlights = filteredFlights.filter((f) => f.to.city === city);
+
+        // Sort so chosen city (dummy or real) appears first
+        if (city) {
+          filteredFlights.sort((a, b) => {
+            if (a.to.city === city) return -1;
+            if (b.to.city === city) return 1;
+            return 0;
+          });
+        }
+
+        // Render all cards
+        filteredFlights.forEach((f) =>
+          results.appendChild(createFlightCard(f, dest))
+        );
+      }
+
+      function openBooking(f, packages) {
+        successMessage.style.display = "none";
+        bookingForm.style.display = "block";
+        currentFlight = f;
+        currentPackages = packages;
+        flightInfo.innerHTML = `<p><strong>Airline:</strong> ${f.airline}</p>
+        <p><strong>Price:</strong> ${f.price}</p>
+        <p><strong>From:</strong> ${f.from.code} ${f.from.time}</p>
+        <p><strong>To:</strong> ${f.to.city} (${f.to.code}) ${f.to.time}</p>
+        <p><strong>Duration:</strong> ${f.duration}</p>
+        <p><strong>Packages:</strong> ${packages.join(", ") || "N/A"}</p>`;
+        modal.style.display = "flex";
+      }
+
+      function closeModal() {
+        modal.style.display = "none";
+      }
+
+      bookingForm.addEventListener("submit", (e) => {
+        e.preventDefault();
+        const name = document.getElementById("nameInput").value;
+        const date = document.getElementById("dateInput").value;
+        const passengers = document.getElementById("passengersInput").value;
+
+        const bookingData = {
+          airline: currentFlight.airline,
+          city: currentFlight.to.city,
+          price: currentFlight.price || "N/A",
+          date: date || "N/A",
+          passengers,
+          name,
+        };
+
+        let saved = JSON.parse(localStorage.getItem("bookings") || "[]");
+        saved.push(bookingData);
+        localStorage.setItem("bookings", JSON.stringify(saved));
+
+        bookings.push(bookingData);
+
+        bookingForm.style.display = "none";
+        successMessage.style.display = "block";
+      });
+
+      function renderBookings() {
+        bookingsList.innerHTML = "";
+        bookings.forEach((b) => {
+          const div = document.createElement("div");
+          div.className = "booking-card";
+          div.innerHTML = `<p><strong>${b.airline}</strong> - ${b.city}</p>
+                       <p><strong>Date:</strong> ${b.date} | <strong>Passengers:</strong> ${b.passengers}</p>
+                       <p><strong>Price:</strong> ${b.price}</p>
+                       <p><strong>Name:</strong> ${b.name}</p>`;
+          bookingsList.appendChild(div);
+        });
+      }
+
+      document
+        .querySelector(".cancel-btn")
+        .addEventListener("click", closeModal);
+      window.addEventListener("click", (e) => {
+        if (e.target === modal) closeModal();
+      });
+
+      populateFilters();
+      renderFlights();
+      countrySelect.addEventListener("change", renderFlights);
+      citySelect.addEventListener("change", renderFlights);
+      destinationSelect.addEventListener("change", renderFlights);
+    </script>
+    <!-- ✅ Footer (from contact.html) -->
+    <footer class="footer">
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-brand">
+            <h3>Explore everywhere</h3>
+            <p>Your doorway to genuine experiences</p>
+          </div>
+
+          <div class="footer-links">
+            <div class="footer-section">
+              <a href="/destinations/tour.html"><h4>All tours</h4></a>
+              <ul>
+                <li><a href="/Explore/Myanmar/myanmar.html">Myanmar</a></li>
+                <li>
+                  <a href="/Explore/Thailand/activitiesthailand.html"
+                    >Thailand</a
+                  >
+                </li>
+                <li><a href="/Explore/Cambodia/cambodia.html">Cambodia</a></li>
+                <li><a href="/Explore/China/activitieschina.html">China</a></li>
+                <li>
+                  <a href="/Explore/Norway/activitiesnorway.html">Norway</a>
+                </li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Utility</h4>
+              <ul>
+                <li><a href="#help">Help Center</a></li>
+                <li><a href="/contact/contact.html">Contact Us</a></li>
+                <li><a href="#booking">Booking Guide</a></li>
+                <li><a href="/Travel FAQ/faq.html">FAQ</a></li>
+              </ul>
+            </div>
+
+            <div class="footer-section">
+              <h4>Follow Us</h4>
+              <div class="social-links">
+                <a href="#facebook" class="social-link"
+                  ><i class="fab fa-facebook-f"></i
+                ></a>
+                <a href="#twitter" class="social-link"
+                  ><i class="fab fa-twitter"></i
+                ></a>
+                <a href="#instagram" class="social-link"
+                  ><i class="fab fa-instagram"></i
+                ></a>
+                <a href="#youtube" class="social-link"
+                  ><i class="fab fa-youtube"></i
+                ></a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <p>&copy; 2025 Explore the globe. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="https://cdn.botpress.cloud/webchat/v3.2/inject.js"></script>
+    <script
+      src="https://files.bpcontent.cloud/2025/08/22/15/20250822154732-L4Z8W94Y.js"
+      defer
+    ></script>
+  </body>
+</html>
