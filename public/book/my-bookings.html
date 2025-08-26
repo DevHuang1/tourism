@@ -106,6 +106,11 @@
         }
 
         bookings.forEach((b, index) => {
+          var passengersAmount = b.passengers;
+          var priceForFlight = b.price;
+
+          let num = parseInt(priceForFlight.replace(/\D/g, ""), 10);
+
           const div = document.createElement("div");
           div.className = "booking-card";
           div.innerHTML = `
@@ -113,7 +118,7 @@
       <p><strong>Date:</strong> ${
         b.date || "N/A"
       } | <strong>Passengers:</strong> ${b.passengers}</p>
-      <p><strong>Price:</strong> ${b.price || "N/A"}</p>
+      <p><strong>Price:</strong> ${num * passengersAmount + " MMK" || "N/A"}</p>
       <p><strong>Name:</strong> ${b.name}</p>
       <button class="delete-btn">❌ Delete</button>
     `;

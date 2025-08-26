@@ -626,14 +626,45 @@
         </div>
         <div id="flightInfo"></div>
         <form id="bookingForm">
-          <label>Name:<input type="text" id="nameInput" required /></label>
-          <label>Email:<input type="email" id="emailInput" required /></label>
-          <label>Phone:<input type="tel" id="phoneInput" required /></label>
           <label
-            >Credit Card:<input type="text" id="cardInput" required
+            >Name:<input
+              placeholder="Please enter letters only"
+              pattern="[A-Za-z\s]+"
+              type="text"
+              id="nameInput"
+              required
           /></label>
           <label
-            >Travel Date:<input type="date" id="dateInput" required
+            >Email:<input
+              placeholder="Please enter correct email form"
+              type="email"
+              id="emailInput"
+              required
+          /></label>
+          <label
+            >Phone:<input
+              placeholder="Please enter numbers only"
+              type="tel"
+              id="phoneInput"
+              required
+          /></label>
+          <label
+            >Credit Card:<input
+              placeholder="Please enter 16 digits of numbers"
+              type="text"
+              id="cardInput"
+              pattern="\d{16}"
+              maxlength="16"
+              inputmode="numeric"
+              title="Enter a valid 16-digit credit card number"
+              required
+          /></label>
+          <label
+            >Travel Date:<input
+              type="date"
+              id="dateInput"
+              placeholder="Enter valid date(book up to a year prior)"
+              required
           /></label>
           <label
             >Passengers:<input
@@ -1048,8 +1079,20 @@
         modal.style.display = "none";
       }
 
+      document.addEventListener("DOMContentLoaded", () => {
+        const datePut = document.getElementById("dateInput");
+
+        const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
+        datePut.setAttribute("min", today); // cannot select past dates
+
+        const nextYear = new Date();
+        nextYear.setFullYear(nextYear.getFullYear() + 1);
+        datePut.setAttribute("max", nextYear.toISOString().split("T")[0]);
+      });
+
       bookingForm.addEventListener("submit", (e) => {
         e.preventDefault();
+
         const name = document.getElementById("nameInput").value;
         const date = document.getElementById("dateInput").value;
         const passengers = document.getElementById("passengersInput").value;
