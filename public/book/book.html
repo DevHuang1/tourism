@@ -1082,8 +1082,8 @@
       document.addEventListener("DOMContentLoaded", () => {
         const datePut = document.getElementById("dateInput");
 
-        const today = new Date().toISOString().split("T")[0]; // YYYY-MM-DD
-        datePut.setAttribute("min", today); // cannot select past dates
+        const today = new Date().toISOString().split("T")[0];
+        datePut.setAttribute("min", today);
 
         const nextYear = new Date();
         nextYear.setFullYear(nextYear.getFullYear() + 1);
