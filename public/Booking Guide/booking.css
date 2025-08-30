@@ -9,6 +9,7 @@ body {
   background: #f8fafc;
   color: #1e3a8a;
 
+  /* ✅ Keep footer at bottom */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -18,6 +19,7 @@ main {
   flex: 1;
 }
 
+/* ✅ Navigation bar full width */
 .nav {
   display: flex;
   justify-content: space-around;
@@ -73,71 +75,13 @@ header h2 {
   margin-bottom: 0.5rem;
 }
 
-/* FAQ columns */
-.faq-columns {
-  display: flex;
-  gap: 1rem;
-  max-width: 1200px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-  margin-top: 90px;
-}
-
-.faq-column {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.faq-card {
-  background: rgba(207, 221, 239, 0.3);
-  border-radius: 18px;
-  padding: 1.2rem;
-  box-shadow: 0 6px 16px rgba(241, 243, 246, 0.854);
-  cursor: pointer;
-  transition: all 0.3s;
-  overflow: hidden;
-}
-
-.faq-card:hover {
-  transform: translateY(-5px) scale(1.02);
-  box-shadow: 0 8px 20px rgba(37, 99, 235, 0.35);
-}
-
-.faq-question {
-  cursor: pointer;
-  font-weight: bold;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-.faq-answer {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.4s ease, padding 0.3s;
-  color: #000000;
-}
-
-.faq-answer.open {
-  max-height: 500px;
-  padding-top: 0.5rem;
-}
-
-.chevron {
-  transition: transform 0.3s;
-}
-.chevron.rotate {
-  transform: rotate(90deg);
-}
-
 /* Footer (from contact.html) */
 .footer {
   background: #2c3e50;
   color: white;
   padding: 3rem 0 1rem;
   width: 100%;
+  margin-top: auto;
   margin-top: 400px;
 }
 
@@ -233,7 +177,7 @@ header h2 {
   }
 }
 
-/*  Responsive */
+/* ✅ Responsive */
 @media (max-width: 768px) {
   .nav {
     flex-direction: column; /* Stack items vertically */
@@ -266,4 +210,34 @@ header h2 {
     grid-template-columns: 1fr;
     gap: 1.5rem;
   }
+}
+/* Booking Guide Section */
+.booking-guide {
+  margin: 2rem auto;
+  padding: 1.5rem;
+  max-width: 900px;
+  background: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  margin-top: 90px;
+}
+
+.booking-guide .guide-step {
+  margin-bottom: 1.2rem;
+}
+
+.booking-guide p {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+  color: #3498db;
+}
+
+.booking-guide ul {
+  margin-left: 1.2rem;
+  list-style-type: disc;
+}
+
+.booking-guide li {
+  margin: 0.2rem 0;
+  color: #555;
 }

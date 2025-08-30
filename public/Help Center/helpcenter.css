@@ -9,6 +9,7 @@ body {
   background: #f8fafc;
   color: #1e3a8a;
 
+  /* ✅ Keep footer at bottom */
   display: flex;
   flex-direction: column;
   min-height: 100vh;
@@ -18,6 +19,7 @@ main {
   flex: 1;
 }
 
+/* ✅ Navigation bar full width */
 .nav {
   display: flex;
   justify-content: space-around;
@@ -233,7 +235,7 @@ header h2 {
   }
 }
 
-/*  Responsive */
+/* ✅ Responsive */
 @media (max-width: 768px) {
   .nav {
     flex-direction: column; /* Stack items vertically */
