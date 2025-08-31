@@ -8,15 +8,18 @@
 body {
   background: #f8fafc;
   color: #1e3a8a;
-
+  
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
-
-main {
-  flex: 1;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
 }
+
+
 
 .nav {
   display: flex;
@@ -36,7 +39,7 @@ main {
 }
 
 .nav-brand h1 {
-  font-size: 1.5rem;
+  font-size: 1.8rem;
   font-weight: 600;
   color: #1f2937;
   margin: 0;
@@ -55,6 +58,7 @@ main {
   color: #1f2937;
   font-weight: 500;
   transition: color 0.3s ease;
+
 }
 .nav-link:hover {
   color: #2563eb;
@@ -137,8 +141,11 @@ header h2 {
   background: #2c3e50;
   color: white;
   padding: 3rem 0 1rem;
-  width: 100%;
+    width: 100%;
+  margin-top: auto;
   margin-top: 400px;
+  font-family: "Poppins", sans-serif;
+  
 }
 
 .footer-content {
@@ -148,6 +155,8 @@ header h2 {
   margin-bottom: 2rem;
   padding: 2rem;
 }
+  
+
 
 .footer-brand h3 {
   font-size: 1.5rem;
@@ -171,10 +180,14 @@ header h2 {
   font-weight: 600;
   margin-bottom: 1rem;
   color: #ecf0f1;
+  
+  
 }
 
 .footer-section ul {
   list-style: none;
+  margin-left: 30px;
+
 }
 
 .footer-section ul li {
@@ -257,13 +270,5 @@ header h2 {
     flex-direction: column;
   }
 
-  .footer-content {
-    grid-template-columns: 1fr;
-    gap: 2rem;
-  }
-
-  .footer-links {
-    grid-template-columns: 1fr;
-    gap: 1.5rem;
-  }
+  
 }
